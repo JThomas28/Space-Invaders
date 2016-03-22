@@ -25,32 +25,43 @@ public class PhoneBook extends JFrame {
 	private JButton add = new JButton("Add");
 	private JButton delete = new JButton("Delete");
 	private int newIndex = 0;
+
 	public PhoneBook() {
 		super("PhoneBook");
 		setLayout(new GridLayout(5, 1));
-		
+
+		// Set up menu bars
 		JMenuBar menus = new JMenuBar();
 		JMenu program = new JMenu("Program");
 		JMenuItem exit = new JMenuItem("Exit");
 		JMenu help = new JMenu("Help");
 		JMenuItem about = new JMenuItem("About...");
-		
-		JOptionPane sure = new JOptionPane("Select an Option");
-		JButton yes = new JButton("Yes");
-		JButton no = new JButton("No");
-		JButton cancel = new JButton("Cancel");
-		sure.add(yes);
-		sure.add(no);
-		sure.add(cancel);
-		
+
 		menus.add(program);
 		menus.add(help);
-		
+
 		program.add(exit);
 		help.add(about);
-		
+
 		setJMenuBar(menus);
 
+		exit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int result = JOptionPane.showConfirmDialog(null, "Want to exit?");
+				if (result == JOptionPane.YES_OPTION) {
+					dispose();
+				}
+			}
+		});
+		about.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "PhoneBook by Jonathan Thomas");
+			}
+		});
+
+		// Set up all the panels
 		JPanel first = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
 		first.add(new JLabel("Entries:"));
 		JLabel nbrOfEntries = new JLabel("0/0");
@@ -73,12 +84,12 @@ public class PhoneBook extends JFrame {
 		fourth.add(work);
 
 		JPanel fifth = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
-		
+
 		fifth.add(before);
 		fifth.add(next);
 		fifth.add(add);
 		fifth.add(delete);
-		
+
 		before.setEnabled(false);
 		next.setEnabled(false);
 		delete.setEnabled(false);
@@ -89,18 +100,18 @@ public class PhoneBook extends JFrame {
 		add(third);
 		add(fourth);
 		add(fifth);
-		
-		
-		
+
 		pack();
 
 		add.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(list.isEmpty()){
+					
+				}
 				Entry person = new Entry(name.getText(), phoneNum.getText(), work.isSelected());
 				list.add(person);
-				index++;
-				nbrOfEntries.setText(index + "/" + list.size());
+				nbrOfEntries.setText(list.size() + "/" + list.size());
 				checkButtons();
 			}
 		});
@@ -132,24 +143,16 @@ public class PhoneBook extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
-	
-	public void checkButtons(){
-		if (index == list.size() && list.size() != 0) {
-			next.setEnabled(false);
-			before.setEnabled(true);
+
+	public void checkButtons() {
+		if (list.size() > 0) {
 			delete.setEnabled(true);
 		}
-		
-		if(index == 0 && list.size()!=0){
-			before.setEnabled(false);
-			delete.setEnabled(true);
+		if (index+1 < list.size()) {
 			next.setEnabled(true);
 		}
-		
-		if(index >0 && index <list.size()){
+		if (index+1 > 0 && list.size() > 0) {
 			before.setEnabled(true);
-			next.setEnabled(true);
-			delete.setEnabled(true);
 		}
 	}
 
