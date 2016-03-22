@@ -15,18 +15,40 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * PhoneBook uses JFrame as a type of phonebook entry system. Can add new
+ * entries, delete entries, and view the next or previous entries.
+ * 
+ * @author JonathanThomas
+ * @version 3/22/16
+ */
 @SuppressWarnings("serial")
 public class PhoneBook extends JFrame {
-	// ****add javadoc to both index and list****
+	/**
+	 * index is the pointer to the current phonebook entry in the arraylist
+	 */
 	private int index = 0;
+
+	/**
+	 * list is the arraylist containing all the entries.
+	 */
 	private ArrayList<Entry> list = new ArrayList<Entry>();
+
+	/**
+	 * before, next, add, and delete are the JButtons used to give commands to
+	 * the program.
+	 */
 	private JButton before = new JButton("Before");
 	private JButton next = new JButton("Next");
 	private JButton add = new JButton("Add");
 	private JButton delete = new JButton("Delete");
-	private int newIndex = 0;
 
+	/**
+	 * Constructor for phonebook. Creates the window's grid layout and adds all
+	 * buttons, fields, and menus
+	 */
 	public PhoneBook() {
+		// Set title of window
 		super("PhoneBook");
 		setLayout(new GridLayout(5, 1));
 
@@ -37,14 +59,19 @@ public class PhoneBook extends JFrame {
 		JMenu help = new JMenu("Help");
 		JMenuItem about = new JMenuItem("About...");
 
+		// add menus to menu bar
 		menus.add(program);
 		menus.add(help);
 
+		// add submenus to menus
 		program.add(exit);
 		help.add(about);
 
+		// add menubar to window
 		setJMenuBar(menus);
 
+		// action listener for exit button. Displays confirm dialog box.
+		// If yes, exits confirm box and main window
 		exit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -54,6 +81,9 @@ public class PhoneBook extends JFrame {
 				}
 			}
 		});
+
+		// action listener for about button. Displays dialogue box with author's
+		// name
 		about.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -62,6 +92,7 @@ public class PhoneBook extends JFrame {
 		});
 
 		// Set up all the panels
+
 		JPanel first = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
 		first.add(new JLabel("Entries:"));
 		JLabel nbrOfEntries = new JLabel("0/0");
@@ -85,11 +116,14 @@ public class PhoneBook extends JFrame {
 
 		JPanel fifth = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
 
+		// add all buttons to the fifth panel
 		fifth.add(before);
 		fifth.add(next);
 		fifth.add(add);
 		fifth.add(delete);
 
+		// initially, all buttons are disabled except add which is always
+		// enabled
 		before.setEnabled(false);
 		next.setEnabled(false);
 		delete.setEnabled(false);
@@ -101,61 +135,138 @@ public class PhoneBook extends JFrame {
 		add(fourth);
 		add(fifth);
 
+		// pack all panels into window
 		pack();
 
+		// add's action listener. Adds an entry object to the array list of
+		// entries.
 		add.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(list.isEmpty()){
-					
-				}
-				Entry person = new Entry(name.getText(), phoneNum.getText(), work.isSelected());
+				Entry person = new Entry(name.getText(), phoneNum.getText(), work.isSelected(), home.isSelected());
 				list.add(person);
+				index = list.size() - 1;
 				nbrOfEntries.setText(list.size() + "/" + list.size());
 				checkButtons();
 			}
 		});
 
+		// next's action listener. Displays next stored entry if there is one.
+		// Button disabled if there's no next entry
 		next.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				newIndex = index++;
-				Entry nextPerson = list.get(newIndex);
+				index += 1;
+				Entry nextPerson = list.get(index);
 				name.setText(nextPerson.getName());
 				phoneNum.setText(nextPerson.getNumber());
-				nbrOfEntries.setText(newIndex + "/" + list.size());
+				work.setSelected(nextPerson.getWork());
+				home.setSelected(nextPerson.getHome());
+				nbrOfEntries.setText(index + 1 + "/" + list.size());
 				checkButtons();
 			}
 		});
 
+		// before's action listener. Displays previous entry if there is one.
+		// Disabled if we are looking at entry from beginning of list.
 		before.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				newIndex = index--;
-				Entry prevPerson = list.get(newIndex);
+				index -= 1;
+				Entry prevPerson = list.get(index);
 				name.setText(prevPerson.getName());
 				phoneNum.setText(prevPerson.getNumber());
-				nbrOfEntries.setText(newIndex + "/" + list.size());
+				work.setSelected(prevPerson.getWork());
+				home.setSelected(prevPerson.getHome());
+				nbrOfEntries.setText(index + 1 + "/" + list.size());
 				checkButtons();
 			}
 		});
 
+		// Delete's action listener. Deletes entry we are looking at and
+		// displays next entry if there is one. If not, displays previous. If we
+		// delete the last entry in the list, clears all fields.
+		delete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (index == 0 && list.size() == 1) {
+					list.remove(index);
+					index = 0;
+					name.setText("");
+					phoneNum.setText("");
+					work.setSelected(false);
+					home.setSelected(false);
+					checkButtons();
+					nbrOfEntries.setText("0/0");
+				}
+				else if (index == list.size() - 1) {
+					// at end of list. Delete current index and index points to
+					// previous
+					int newIndex = index - 1;
+					Entry replace = list.get(newIndex);
+					list.remove(index);
+					index = newIndex;
+
+					name.setText(replace.getName());
+					phoneNum.setText(replace.getNumber());
+					work.setSelected(replace.getWork());
+					home.setSelected(replace.getHome());
+					nbrOfEntries.setText(index + 1 + "/" + list.size());
+					checkButtons();
+				}
+				else {
+					int newIndex = index;
+					index += 1;
+					Entry replace = list.get(index);
+					list.remove(newIndex);
+					index = newIndex;
+
+					name.setText(replace.getName());
+					phoneNum.setText(replace.getNumber());
+					work.setSelected(replace.getWork());
+					home.setSelected(replace.getHome());
+					nbrOfEntries.setText(index + 1 + "/" + list.size());
+					checkButtons();
+				}
+			}
+		});
+
+		// center frame and set close operation
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
+	/**
+	 * Helper method. Called each time a button is pressed to ensure the correct
+	 * buttons are enabled/disabled.
+	 */
 	public void checkButtons() {
 		if (list.size() > 0) {
 			delete.setEnabled(true);
 		}
-		if (index+1 < list.size()) {
+		else {
+			delete.setEnabled(false);
+		}
+
+		if (index + 1 < list.size()) {
 			next.setEnabled(true);
 		}
-		if (index+1 > 0 && list.size() > 0) {
+		else {
+			next.setEnabled(false);
+		}
+		if (index > 0 && list.size() > 0) {
 			before.setEnabled(true);
+		}
+		else {
+			before.setEnabled(false);
 		}
 	}
 
+	/**
+	 * Main method. Displays frame.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		JFrame frame = new PhoneBook();
 		frame.setVisible(true);
