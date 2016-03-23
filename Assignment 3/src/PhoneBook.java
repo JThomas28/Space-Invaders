@@ -87,7 +87,8 @@ public class PhoneBook extends JFrame {
 		about.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "PhoneBook by Jonathan Thomas");
+				JOptionPane.showMessageDialog(null, "PhoneBook\nby JonathanThomas", "Message",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 
@@ -100,7 +101,7 @@ public class PhoneBook extends JFrame {
 
 		JPanel second = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		JTextField name = new JTextField(40);
-		second.add(new JLabel("Name:"));
+		second.add(new JLabel("Name"));
 		second.add(name);
 
 		JPanel third = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
