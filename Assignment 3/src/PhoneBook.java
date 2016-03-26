@@ -20,7 +20,7 @@ import javax.swing.JTextField;
  * entries, delete entries, and view the next or previous entries.
  * 
  * @author JonathanThomas
- * @version 3/22/16
+ * @version 3/25/16
  */
 @SuppressWarnings("serial")
 public class PhoneBook extends JFrame {
@@ -59,29 +59,32 @@ public class PhoneBook extends JFrame {
 		JMenu help = new JMenu("Help");
 		JMenuItem about = new JMenuItem("About...");
 
-		// add menus to menu bar
-		menus.add(program);
-		menus.add(help);
-
 		// add submenus to menus
 		program.add(exit);
 		help.add(about);
+
+		// add menus to menu bar
+		menus.add(program);
+		menus.add(help);
 
 		// add menubar to window
 		setJMenuBar(menus);
 
 		// action listener for exit button. Displays confirm dialog box.
 		// If yes, exits confirm box and main window
+
 		exit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int result = JOptionPane.showConfirmDialog(null, "Want to exit?");
+				int result = JOptionPane.showConfirmDialog(PhoneBook.this, "Want to exit?", "Select an Option",
+						JOptionPane.YES_NO_CANCEL_OPTION);
+				
 				if (result == JOptionPane.YES_OPTION) {
 					dispose();
 				}
 			}
 		});
-
+		
 		// action listener for about button. Displays dialogue box with author's
 		// name
 		about.addActionListener(new ActionListener() {
@@ -93,7 +96,6 @@ public class PhoneBook extends JFrame {
 		});
 
 		// Set up all the panels
-
 		JPanel first = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
 		first.add(new JLabel("Entries:"));
 		JLabel nbrOfEntries = new JLabel("0/0");
@@ -101,17 +103,21 @@ public class PhoneBook extends JFrame {
 
 		JPanel second = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		JTextField name = new JTextField(40);
+		name.setName("Name field");
 		second.add(new JLabel("Name"));
 		second.add(name);
 
 		JPanel third = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		JTextField phoneNum = new JTextField(20);
+		phoneNum.setName("Phone Number Field");
 		third.add(new JLabel("Phone"));
 		third.add(phoneNum);
 
 		JPanel fourth = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
 		JCheckBox home = new JCheckBox("Home");
+		home.setName("Home Checkbox");
 		JCheckBox work = new JCheckBox("Work");
+		work.setName("Work Checkbox");
 		fourth.add(home);
 		fourth.add(work);
 
@@ -255,7 +261,7 @@ public class PhoneBook extends JFrame {
 		else {
 			next.setEnabled(false);
 		}
-		if (index > 0 && list.size() > 0) {
+		if (index > 0) {
 			before.setEnabled(true);
 		}
 		else {
