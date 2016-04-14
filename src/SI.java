@@ -6,5 +6,14 @@ public class SI extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public SI(){
+		super("Space Invaders");
+		setResizable(false);
+		setFocusable(true);
+		SIPanel panel = new SIPanel();
+		add(panel);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+	}
 
 }
