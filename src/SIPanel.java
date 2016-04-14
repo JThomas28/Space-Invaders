@@ -13,6 +13,7 @@ public class SIPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	public SIPanel(){
 		setBackground(Color.BLACK);
+		setFocusable(true);
 		initializeBase();
 	}
 	
