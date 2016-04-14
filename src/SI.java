@@ -9,11 +9,14 @@ public class SI extends JFrame {
 	
 	public SI(){
 		super("Space Invaders");
-		setResizable(false);
-		setFocusable(true);
+		
 		SIPanel panel = new SIPanel();
 		panel.setFocusable(true);
 		add(panel);
+		
+		
+		setResizable(false);
+		setFocusable(true);
 		setSize(500, 450);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
