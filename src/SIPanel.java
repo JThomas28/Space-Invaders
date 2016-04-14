@@ -19,7 +19,7 @@ public class SIPanel extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
-		//base.drawImage(g);
+		base.drawImage(g);
 	}
 
 }
