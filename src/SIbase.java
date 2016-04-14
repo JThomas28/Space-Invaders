@@ -13,7 +13,7 @@ public class SIbase extends SIship{
 	
 	@Override
 	public void drawImage(Graphics g) {
-		g.drawImage(SIPanel.getImage(getImageLocation()), getX(), getY(), null);
+		g.drawImage(SIthing.getImage(getImageLocation()), getX(), getY(), null);
 	}
 
 	@Override
@@ -21,5 +21,10 @@ public class SIbase extends SIship{
 		
 	}
 	
+	public Image getImage(String filename){
+		URL url = getClass().getResource(filename);
+		ImageIcon image = new ImageIcon(url);
+		return image.getImage();
+	}
 	
 }
