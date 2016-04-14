@@ -5,10 +5,11 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 
 public class SIbase extends SIship{
-	private Image base;
-	public SIbase() {
-		super("SIbase.gif", 250, 400);
+	
+	public SIbase(String imageLoc, int xPos, int yPos) {
+		super(imageLoc, xPos, yPos);
 	}
+	
 	@Override
 	public void drawImage(Graphics g) {
 		g.drawImage(getImage(imageLocation), getX(), getY(), null);
@@ -16,7 +17,7 @@ public class SIbase extends SIship{
 
 	@Override
 	public void moveImage(int xUnits, int yUnits) {
-		// TODO Auto-generated method stub
+		
 	}
 	
 	private Image getImage(String filename){
