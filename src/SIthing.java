@@ -1,8 +1,6 @@
 
 public abstract class SIthing {
 	private String imageLocation;
-	
-
 	private int x;
 	private int y;
 	private int width;
