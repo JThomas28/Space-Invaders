@@ -25,9 +25,5 @@ public class SIPanel extends JPanel {
 		base.drawImage(g);
 	}
 
-	public Image getImage(String filename){
-		URL url = getClass().getResource(filename);
-		ImageIcon image = new ImageIcon(url);
-		return image.getImage();
-	}
+	
 }
