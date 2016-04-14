@@ -1,15 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
 public class SIPanel extends JPanel {
 	private SIbase base;
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public SIPanel(){
 		setBackground(Color.BLACK);
