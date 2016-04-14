@@ -2,8 +2,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 public abstract class SIthing {
-	protected String imageLocation;
-	protected int x, y;
+	private String imageLocation;
+	private int x, y;
 	
 	private boolean isVisible;
 	

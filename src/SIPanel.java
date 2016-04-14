@@ -9,7 +9,7 @@ public class SIPanel extends JPanel {
 	public SIPanel(){
 		setBackground(Color.BLACK);
 		setFocusable(true);
-		initializeBase();
+		//initializeBase();
 	}
 	
 	public void initializeBase(){
@@ -19,7 +19,7 @@ public class SIPanel extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
-		base.drawImage(g);
+		//base.drawImage(g);
 	}
 
 }
