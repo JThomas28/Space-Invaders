@@ -1,4 +1,4 @@
 
-public class SIbase {
-
+public class SIbase extends SIship{
+	
 }
