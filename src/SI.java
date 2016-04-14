@@ -12,6 +12,7 @@ public class SI extends JFrame {
 		setResizable(false);
 		setFocusable(true);
 		SIPanel panel = new SIPanel();
+		panel.setFocusable(true);
 		add(panel);
 		setSize(500, 450);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
