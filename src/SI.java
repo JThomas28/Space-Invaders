@@ -16,4 +16,8 @@ public class SI extends JFrame {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
+	public static void main(String [] args){
+		JFrame si = new SI();
+		si.setVisible(true);
+	}
 }
