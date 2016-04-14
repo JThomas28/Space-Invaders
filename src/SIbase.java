@@ -8,11 +8,10 @@ public class SIbase extends SIship{
 	private Image base;
 	public SIbase() {
 		super("SIbase.gif", 250, 400);
-		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public void drawImage(Graphics g) {
-		
+		g.drawImage(imageLocation, x, y, observer)
 	}
 
 	@Override
