@@ -1,22 +1,20 @@
+import java.awt.Graphics;
 
 public abstract class SIthing {
 	private String imageLocation;
 	private int x;
 	private int y;
-	private int width;
-	private int height;
+	
 	private boolean isVisible;
 	
-	public SIthing(String image, int xPos, int yPos, int width, int height){
+	public SIthing(String image, int xPos, int yPos){
 		this.imageLocation = image;
 		this.x = xPos;
 		this.y = yPos;
-		this.width = width;
-		this.height = height;
 		isVisible = true;
 	}
 	
-	public abstract void drawImage();
+	public abstract void drawImage(Graphics g);
 	public abstract void moveImage(int xUnits, int yUnits);
 	
 	public void setVisible(boolean b){
@@ -53,21 +51,5 @@ public abstract class SIthing {
 
 	public void setY(int y) {
 		this.y = y;
-	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
 	}
 }
