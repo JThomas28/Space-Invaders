@@ -11,7 +11,7 @@ public class SIbase extends SIship{
 	}
 	@Override
 	public void drawImage(Graphics g) {
-		g.drawImage(imageLocation, x, y, observer)
+		g.drawImage(getImage(imageLocation), getX(), getY(), null);
 	}
 
 	@Override

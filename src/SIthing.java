@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Image;
 
 public abstract class SIthing {
 	protected String imageLocation;
