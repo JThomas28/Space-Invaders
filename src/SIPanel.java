@@ -9,7 +9,7 @@ public class SIPanel extends JPanel {
 	public SIPanel(){
 		setBackground(Color.BLACK);
 		setFocusable(true);
-		//initializeBase();
+		initializeBase();
 	}
 	
 	public void initializeBase(){
