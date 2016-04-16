@@ -7,31 +7,30 @@ import javax.swing.ImageIcon;
 public abstract class SIthing {
 	private String imageLocation;
 	private int x, y;
-	
+
 	private boolean isVisible;
-	
-	public SIthing(String image, int xPos, int yPos){
+
+	public SIthing(String image, int xPos, int yPos) {
 		this.imageLocation = image;
 		this.x = xPos;
 		this.y = yPos;
 		isVisible = true;
 	}
-	
+
 	public abstract void drawImage(Graphics g);
-	public abstract void moveImage(int xUnits, int yUnits);
-	
-	public void setVisible(boolean b){
+	public abstract void moveLeft();
+	public abstract void moveRight();
+
+	//public abstract void moveImage(int xUnits, int yUnits);
+
+	public void setVisible(boolean b) {
 		isVisible = b;
 	}
-	
-	public boolean getVisibility(){
+
+	public boolean getVisibility() {
 		return isVisible;
 	}
-	
-	public int getXPos(){
-		return x;
-	}
-	
+
 	public String getImageLocation() {
 		return imageLocation;
 	}
@@ -54,5 +53,11 @@ public abstract class SIthing {
 
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	public Image getImage(String filename) {
+		URL url = getClass().getResource(filename);
+		ImageIcon image = new ImageIcon(url);
+		return image.getImage();
 	}
 }
