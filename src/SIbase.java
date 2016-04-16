@@ -17,11 +17,28 @@ public class SIbase extends SIship {
 
 	@Override
 	public void moveLeft() {
-		setX(getX() - 10);
+		if(getX() > 9){
+			setX(getX() - 10);
+		}
 	}
 	
 	@Override
 	public void moveRight(){
-		setX(getX() + 10);
+		if(getX() < 470){
+			setX(getX() + 10);
+		}
+	}
+
+	@Override
+	public void moveUp() {}
+
+	@Override
+	public void moveDown() {}
+	
+	public void shoot(){
+		int x = getX();
+		int y = getY();
+		SImissle missle = new SImissle(x,y);
+		missle.moveUp();
 	}
 }

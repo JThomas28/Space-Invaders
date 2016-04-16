@@ -20,8 +20,9 @@ public abstract class SIthing {
 	public abstract void drawImage(Graphics g);
 	public abstract void moveLeft();
 	public abstract void moveRight();
-
-	//public abstract void moveImage(int xUnits, int yUnits);
+	public abstract void moveUp();
+	public abstract void moveDown();
+	
 
 	public void setVisible(boolean b) {
 		isVisible = b;
