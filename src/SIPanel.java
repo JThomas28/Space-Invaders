@@ -81,8 +81,11 @@ public class SIPanel extends JPanel {
 				// left = true;
 				// right = false;
 				// }
-				if(space){
+				if(space && !missle.getVisibility()){
+					newMissle();
 					missle.setVisible(true);
+				}
+				if(missle.getVisibility()){
 					missle.moveUp();
 				}
 			}
@@ -100,7 +103,7 @@ public class SIPanel extends JPanel {
 	}
 	
 	public void newMissle(){
-		missle = new SImissle(base.getX(), base.getY());
+		missle = new SImissle(base.getX() + 12, base.getY());
 		things.add(missle);
 	}
 
@@ -108,8 +111,8 @@ public class SIPanel extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.GREEN);
-		g.drawString("Lives:  " + lifeCount, 420, 20);
-		g.drawString("Level: " + level, 250, 20);
+		g.drawString("Lives:  " + lifeCount, 430, 20);
+		g.drawString("Level: " + level, 230, 20);
 		g.drawString("Score:  " + score, 10, 20);
 		for (int i = 0; i < things.size(); i++) {
 			SIthing currThing = things.get(i);
