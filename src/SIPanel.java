@@ -15,17 +15,17 @@ public class SIPanel extends JPanel {
 	private boolean left, right, space;
 	private ArrayList<SIthing> things = new ArrayList<SIthing>();
 	private SImissle missle;
-	private int lifeCount = 3;
-	private int level = 1;
 	private int score = 0;
 	private int pulse = 0;
 	private Timer timer;
+	private SIship ship;
+	private SIinvader invader;
+	private ArrayList <SIinvader> aliens = new ArrayList<SIinvader>();
+	private boolean movingRight = true;
 
 	public SIPanel() {
 		setFocusable(true);
-		
-		
-		
+
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -40,7 +40,7 @@ public class SIPanel extends JPanel {
 				// implement below statement to play a sound
 				case KeyEvent.VK_SPACE:
 					// implement to play sound
-					// SIship.getSound().play();
+					// base.baseShoot().play();
 					space = true;
 					break;
 				}
@@ -57,7 +57,7 @@ public class SIPanel extends JPanel {
 
 				case KeyEvent.VK_SPACE:
 					// implement to play sound
-					// SIship.getSound().play();
+					// base.baseShoot().play();
 					space = false;
 					break;
 				}
@@ -69,7 +69,7 @@ public class SIPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				repaint();
-				if (left) {// && base.getX() > 9) {
+				if (left) {
 					base.moveLeft();
 				}
 				// this is how to make invaders move from side to side
@@ -86,35 +86,119 @@ public class SIPanel extends JPanel {
 				// left = true;
 				// right = false;
 				// }
-				if (space && missle == null){//!missle.getVisibility()) {
+
+				if (space && missle == null) {// !missle.getVisibility()) {
 					newBaseMissle();
+					base.baseShoot().play();
 					missle.setVisible(true);
 				}
-				if (missle != null){
-					if(missle.getVisibility() && pulse % 2 == 0){
+				if (missle != null) {
+					if (missle.getVisibility() && pulse % 2 == 0) {
 						missle.moveUp();
 					}
-					if(!missle.getVisibility()){
+					if (!missle.getVisibility()) {
 						missle = null;
 					}
 				}
+				
+				//trying to move the invaders
+				if (pulse % 40 == 0) {
+					SIinvader i = aliens.get(5);
+					if(i.getX() < 50 && !movingRight){
+						movingRight = true;
+						i.setY(getY() + 20);
+					}
+					else if (getX() > 450 && movingRight){
+						movingRight = false;
+						i.setY(getY() + 20);
+					}
+					else if(movingRight){
+						i.setX(getX() + 20);
+					}
+					else{
+						i.setX(getX() - 20);
+					}
+					
+//					for(SIinvader v: aliens){
+//						if(v.getX() < 50 && movingRight != true){
+//							movingRight = true;
+//							v.setY(getY() + 20);
+//						}
+//						else if(v.getX() > 450 && movingRight){
+//							movingRight = false;
+//							v.setY(getY() + 20);
+//						}
+//						else if(movingRight){
+//							v.setX(getX() + 20);
+//						}
+//						else{
+//							v.setX(getX() - 20);
+//						}
+//					}
+					
+				}
+
+				// if(ship.testShipHit(missle)){
+				// ship.setVisible(false);
+				// }
 				pulse++;
 			}
 		});
+
 		timer.start();
 		setBackground(Color.BLACK);
-
-		initializeBase();
+		newGame();
 	}
 
-	public void pause(){
+	public void newGame() {
+		initializeBase();
+		initializeAliens();
+		missle = null;
+		score = 0;
+	}
+
+	private void initializeAliens() {
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 10; j++) {
+
+				if (i == 0) {
+					// draw top type of alien
+					invader = new SItop(50 + 42 * j, 50 + 25 * i);
+					aliens.add(invader);
+					//things.add(invader);
+					
+				}
+				if (i == 1 || i == 2) {
+					// draw middle alien
+					invader = new SImiddle(50 + 42 * j, 50 + 25 * i);
+					
+					aliens.add(invader);
+					//things.add(invader);
+				}
+				if (i == 3 || i == 4) {
+					// draw bottom alien
+					invader = new SIbottom(50 + 42 * j, 50 + 25 * i);
+					aliens.add(invader);
+					//things.add(invader);
+				}
+				
+			}
+		}
+		for(int i = 0; i < aliens.size(); i++){
+			things.add(aliens.get(i));
+		}
+		
+	}
+
+	public void pause() {
 		timer.stop();
 	}
 
-	public void start(){
+	public void start() {
 		timer.start();
 	}
-	public void initializeBase() {
+
+	private void initializeBase() {
 		base = new SIbase();
 		things.add(base);
 	}
@@ -123,14 +207,11 @@ public class SIPanel extends JPanel {
 		missle = new SImissle(base.getX() + 12, base.getY());
 		things.add(missle);
 	}
-	
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.GREEN);
-		g.drawString("Lives:  " + lifeCount, 430, 20);
-		g.drawString("Level: " + level, 230, 20);
 		g.drawString("Score:  " + score, 10, 20);
 		for (int i = 0; i < things.size(); i++) {
 			SIthing currThing = things.get(i);

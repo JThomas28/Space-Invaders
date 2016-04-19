@@ -1,12 +1,19 @@
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public abstract class SIthing {
 	private String imageLocation;
 	private int x, y;
+	private Image pic;
 
 	private boolean isVisible;
 
@@ -24,6 +31,11 @@ public abstract class SIthing {
 	public abstract void moveDown();
 	
 
+	public AudioClip getSound(String filename){
+		URL url = getClass().getResource(filename);
+		return Applet.newAudioClip(url);
+	}
+	
 	public void setVisible(boolean b) {
 		isVisible = b;
 	}

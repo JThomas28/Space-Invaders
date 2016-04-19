@@ -7,6 +7,7 @@ public class SImissle extends SIthing {
 		super(null, x, y);
 		setVisible(false);
 	}
+	
 	@Override
 	public void drawImage(Graphics g) {
 		if(getVisibility()){
