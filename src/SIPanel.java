@@ -133,7 +133,7 @@ public class SIPanel extends JPanel {
 					}
 					else{
 						for(SIinvader i: aliens){
-							i.moveRight();
+							i.moveLeft();
 						}
 					}
 				}
