@@ -17,22 +17,19 @@ public abstract class SIinvader extends SIship {
 	public void drawImage(Graphics g) {
 		g.drawImage(alienType, getX(), getY(), null);
 	}
-	public void moveInvaders(){
-		if(getX() > 425){
-			
+
+	@Override
+	public void moveLeft() {
+		if(getX() > 9){
+			setX(getX() - 10);
 		}
 	}
 
 	@Override
-	public void moveLeft() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void moveRight() {
-		// TODO Auto-generated method stub
-
+		if(getX() < 470){
+			setX(getX() + 10);
+		}
 	}
 
 	@Override
@@ -43,8 +40,10 @@ public abstract class SIinvader extends SIship {
 
 	@Override
 	public void moveDown() {
-		// TODO Auto-generated method stub
-
+		for(int i = 0; i < 1; i++){
+			setY(getY() + 10);
+		}
+		
 	}
 	
 	public Image getInvaderHit(){

@@ -20,8 +20,9 @@ public class SIPanel extends JPanel {
 	private Timer timer;
 	private SIship ship;
 	private SIinvader invader;
-	private ArrayList <SIinvader> aliens = new ArrayList<SIinvader>();
+	private ArrayList<SIinvader> aliens = new ArrayList<SIinvader>();
 	private boolean movingRight = true;
+	private int min, max = 0;
 
 	public SIPanel() {
 		setFocusable(true);
@@ -101,23 +102,57 @@ public class SIPanel extends JPanel {
 					}
 				}
 				
+				boolean moveRight = true;
+				boolean moveLeft = false;
 				//trying to move the invaders
-				if (pulse % 40 == 0) {
-					SIinvader i = aliens.get(5);
-					if(i.getX() < 50 && !movingRight){
-						movingRight = true;
-						i.setY(getY() + 20);
+				if (pulse % 2 == 0) {
+					for(SIinvader i: aliens){
+						min = Math.min(min, i.getX());
+						max = Math.max(max, i.getX());
 					}
-					else if (getX() > 450 && movingRight){
-						movingRight = false;
-						i.setY(getY() + 20);
+					
+					if(moveRight && max >= 469){
+						moveRight = false;
+						moveLeft = true;
+						for(SIinvader i: aliens){
+							i.moveDown();
+						}
 					}
-					else if(movingRight){
-						i.setX(getX() + 20);
+					else if(moveLeft && min < 10){
+						moveLeft = false;
+						moveRight = true;
+						for(SIinvader i: aliens){
+							i.moveDown();
+						}
+
+					}
+					else if(moveRight){
+						for(SIinvader i: aliens){
+							i.moveRight();
+						}
 					}
 					else{
-						i.setX(getX() - 20);
+						for(SIinvader i: aliens){
+							i.moveRight();
+						}
 					}
+				}
+					//SIinvader i = aliens.get(5);
+					
+//					if(i.getX() < 50 && !movingRight){
+//						movingRight = true;
+//						i.setY(getY() + 20);
+//					}
+//					else if (getX() > 450 && movingRight){
+//						movingRight = false;
+//						i.setY(getY() + 20);
+//					}
+//					else if(movingRight){
+//						i.setX(getX() + 20);
+//					}
+//					else{
+//						i.setX(getX() - 20);
+//					}
 					
 //					for(SIinvader v: aliens){
 //						if(v.getX() < 50 && movingRight != true){
@@ -136,7 +171,7 @@ public class SIPanel extends JPanel {
 //						}
 //					}
 					
-				}
+				//}
 
 				// if(ship.testShipHit(missle)){
 				// ship.setVisible(false);
@@ -145,8 +180,9 @@ public class SIPanel extends JPanel {
 			}
 		});
 
-		timer.start();
-		setBackground(Color.BLACK);
+	timer.start();
+
+	setBackground(Color.BLACK);
 		newGame();
 	}
 
@@ -165,29 +201,29 @@ public class SIPanel extends JPanel {
 					// draw top type of alien
 					invader = new SItop(50 + 42 * j, 50 + 25 * i);
 					aliens.add(invader);
-					//things.add(invader);
-					
+					// things.add(invader);
+
 				}
 				if (i == 1 || i == 2) {
 					// draw middle alien
 					invader = new SImiddle(50 + 42 * j, 50 + 25 * i);
-					
+
 					aliens.add(invader);
-					//things.add(invader);
+					// things.add(invader);
 				}
 				if (i == 3 || i == 4) {
 					// draw bottom alien
 					invader = new SIbottom(50 + 42 * j, 50 + 25 * i);
 					aliens.add(invader);
-					//things.add(invader);
+					// things.add(invader);
 				}
-				
+
 			}
 		}
-		for(int i = 0; i < aliens.size(); i++){
+		for (int i = 0; i < aliens.size(); i++) {
 			things.add(aliens.get(i));
 		}
-		
+
 	}
 
 	public void pause() {
