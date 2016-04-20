@@ -6,7 +6,7 @@ public abstract class SIinvader extends SIship {
 	private int pointVal;
 	private Image invaderHit;
 	private Image alienType;
-	private static double speed = 40;
+	private static double speed = 6;
 
 	public SIinvader(String img, int x, int y, int point, Dimension size) {
 		super(img, x, y, size);
