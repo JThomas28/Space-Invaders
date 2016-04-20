@@ -26,12 +26,20 @@ public class SImissle extends SIthing {
 	
 	@Override
 	public void moveUp() {
-		if(getY() > 0){
-			setY(getY() - 15);
+		if(getVisibility()){
+			if(getY() > 0){
+				setY(getY() - 15);
+			}
+			else{
+				setVisible(false);
+			}
 		}
-		else{
-			setVisible(false);
-		}
+//		if(getY() > 0){
+//			setY(getY() - 15);
+//		}
+//		else{
+//			setVisible(false);
+//		}
 	}
 	@Override
 	public void moveDown() {

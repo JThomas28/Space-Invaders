@@ -70,8 +70,8 @@ public class SIPanel extends JPanel {
 		timer = new Timer(50, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				repaint();
+				
 				if (left) {
 					if(base.getX() >= 10){
 						base.moveLeft();
