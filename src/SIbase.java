@@ -16,6 +16,10 @@ public class SIbase extends SIship {
 		baseShoot();
 	}
 	
+	public Image getBaseShotImage(){
+		return baseShotImage;
+	}
+	
 	@Override
 	public void drawImage(Graphics g) {
 		g.drawImage(baseImage, getX(), getY(), getSize().width, getSize().height, null);
