@@ -32,6 +32,7 @@ public class SImissle extends SIthing {
 			}
 			else{
 				setVisible(false);
+				
 			}
 		}
 //		if(getY() > 0){

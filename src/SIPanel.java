@@ -90,9 +90,9 @@ public class SIPanel extends JPanel {
 					missle.setVisible(true);
 				}
 				if (missle != null) {
-					if (missle.getVisibility()) {
+					//if (missle.getVisibility()) {
 						missle.moveUp();
-					}
+					//}
 					if (!missle.getVisibility()) {
 						missle = null;
 					}
