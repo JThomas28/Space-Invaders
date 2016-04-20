@@ -73,11 +73,15 @@ public class SIPanel extends JPanel {
 
 				repaint();
 				if (left) {
-					base.moveLeft();
+					if(base.getX() >= 10){
+						base.moveLeft();
+					}
 				}
 
 				if (right) {// base.getX() < 470){
-					base.moveRight();
+					if(base.getX() + base.getSize().getWidth() <= 490){
+						base.moveRight();
+					}
 				}
 
 				if (space && missle == null) {// !missle.getVisibility()) {
@@ -98,7 +102,7 @@ public class SIPanel extends JPanel {
 				if (pulse % (int) SIinvader.getSpeed() == 0) {
 					for (SIinvader i : aliens) {
 						max = (int) Math.max(499, i.getX() + i.getSize().getWidth());
-						min = (int) Math.min(1, i.getX());
+						min = (int) Math.min(10, i.getX());
 					}
 
 					if (moveRight && max > 499) {
@@ -109,7 +113,7 @@ public class SIPanel extends JPanel {
 						}
 						SIinvader.increaseSpeed();
 					}
-					else if (moveLeft && min < 9) {
+					else if (moveLeft && min < 10) {
 						moveLeft = false;
 						moveRight = true;
 						for (SIinvader v : aliens) {
