@@ -133,7 +133,8 @@ public class SIPanel extends JPanel {
 
 				// if(ship.testShipHit(missle)){
 				// ship.setVisible(false);
-				if(pulse == 10){
+				
+				if(pulse == 40){
 					pulse = 0;
 				}
 				else{
@@ -199,7 +200,7 @@ public class SIPanel extends JPanel {
 	}
 
 	public void newBaseMissle() {
-		missle = new SImissle(base.getX() + base.getSize().width / 2, base.getY());
+		missle = new SImissle(base.getX() + base.getSize().width / 2, base.getY(), Color.green);
 		things.add(missle);
 	}
 

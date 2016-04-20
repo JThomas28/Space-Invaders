@@ -3,16 +3,17 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 public class SImissle extends SIthing {
-	
-	public SImissle(int x, int y){
+	private Color color;
+	public SImissle(int x, int y, Color c){
 		super(null, x, y, new Dimension(2, 10));
 		setVisible(false);
+		color = c;
 	}
 	
 	@Override
 	public void drawImage(Graphics g) {
 		if(getVisibility()){
-			g.setColor(Color.WHITE);
+			g.setColor(color);
 			g.fillRect(getX(), getY(), 2, 10);
 		}
 	}
