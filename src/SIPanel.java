@@ -99,7 +99,7 @@ public class SIPanel extends JPanel {
 				if (pulse % (int) SIinvader.getSpeed() == 0) {
 					for (SIinvader i : aliens) {
 						max = (int) Math.max(499, i.getX() + i.getSize().getWidth());
-						min = (int) Math.min(10, i.getX());
+						min = (int) Math.min(30, i.getX());
 					}
 
 					if (moveRight && max > 499) {
