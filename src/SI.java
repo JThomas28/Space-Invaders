@@ -42,7 +42,7 @@ public class SI extends JFrame {
 		// add menu bar to the window
 		menus.add(game);
 		menus.add(help);
-		//setJMenuBar(menus);
+		setJMenuBar(menus);
 
 		about.addActionListener(new ActionListener() {
 			@Override
@@ -110,7 +110,7 @@ public class SI extends JFrame {
 		setResizable(false);
 		setSize(500, 450);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
