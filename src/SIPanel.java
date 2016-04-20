@@ -95,6 +95,10 @@ public class SIPanel extends JPanel {
 //					}
 //				}
 				if(space){
+					if(base.getImageLocation().equals("SIbase.gif")){
+						//if base is not destroyed
+						base.fire();
+					}
 					missle = base.fire();
 					if(missle.getVisibility()){
 						things.add(missle);
