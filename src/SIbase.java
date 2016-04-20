@@ -18,11 +18,12 @@ public class SIbase extends SIship {
 		baseShoot();
 	}
 	
-	public void fire(){
+	public SImissle fire(){
 		if(missle == null){
 			missle = new SImissle((int) ((int)getX() + getSize().getWidth() / 2), getY(), Color.green);
 			missle.setVisible(true);
 			baseShoot().play();
+			
 		}
 		else if(!missle.getVisibility()){
 			missle = null;
@@ -30,6 +31,7 @@ public class SIbase extends SIship {
 		else{
 			missle.moveUp();
 		}
+		return missle;
 		
 	}
 	
