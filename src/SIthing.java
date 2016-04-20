@@ -36,6 +36,11 @@ public abstract class SIthing {
 		return Applet.newAudioClip(url);
 	}
 	
+	public int getWidth(){
+		Image img = getImage(imageLocation);
+		return img.getWidth(null);
+	}
+	
 	public void setVisible(boolean b) {
 		isVisible = b;
 	}
