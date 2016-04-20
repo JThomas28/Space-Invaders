@@ -95,7 +95,12 @@ public class SIPanel extends JPanel {
 //					}
 //				}
 				if(space){
-					things.add(base.fire());
+					missle = base.fire();
+					if(missle.getVisibility()){
+						things.add(missle);
+					}
+					
+					things.add(missle);
 				}
 
 				// trying to move the invaders
