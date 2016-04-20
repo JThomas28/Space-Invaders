@@ -78,7 +78,7 @@ public class SIPanel extends JPanel {
 					}
 				}
 
-				if (right) {// base.getX() < 470){
+				if (right) {
 					if(base.getX() + base.getSize().getWidth() <= 490){
 						base.moveRight();
 					}

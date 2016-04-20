@@ -23,16 +23,12 @@ public class SIbase extends SIship {
 
 	@Override
 	public void moveLeft() {
-		if(getX() > 9){
-			setX(getX() - 10);
-		}
+		setX(getX() - 10);
 	}
 	
 	@Override
 	public void moveRight(){
-		if(getX() < 470){
-			setX(getX() + 10);
-		}
+		setX(getX() + 10);
 	}
 	
 	public AudioClip baseShoot(){
