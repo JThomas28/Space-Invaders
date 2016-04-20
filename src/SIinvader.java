@@ -39,7 +39,7 @@ public abstract class SIinvader extends SIship {
 
 	@Override
 	public void moveDown() {
-		setY(getY() + 20);
+		setY(getY() + 10);
 		
 	}
 	

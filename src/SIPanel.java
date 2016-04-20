@@ -96,38 +96,63 @@ public class SIPanel extends JPanel {
 				}
 
 				// trying to move the invaders
-				if (pulse % (int) SIinvader.getSpeed() == 0) {
+				if (pulse % (int) SIinvader.getSpeed() == 0){
 					for (SIinvader i : aliens) {
-						max = (int) Math.max(499, i.getX() + i.getSize().getWidth());
-						min = (int) Math.min(30, i.getX());
-					}
-
-					if (moveRight && max > 499) {
-						moveRight = false;
-						moveLeft = true;
-						for (SIinvader v : aliens) {
-							v.moveDown();
+						max = (int) Math.max(480, i.getX() + i.getSize().getWidth());
+						if(max > 480){
+							moveRight = false;
+							moveLeft = true;
+							for (SIinvader v : aliens) {
+								v.moveDown();
+							}
+							SIinvader.increaseSpeed();
 						}
-						SIinvader.increaseSpeed();
-					}
-					else if (moveLeft && min < 10) {
-						moveLeft = false;
-						moveRight = true;
-						for (SIinvader v : aliens) {
-							v.moveDown();
+						min = (int) Math.min(20, i.getX());
+						if(min < 20){
+							moveLeft = false;
+							moveRight = true;
+							for (SIinvader v : aliens) {
+								v.moveDown();
+							}
+							SIinvader.increaseSpeed();
 						}
-						SIinvader.increaseSpeed();
 					}
-					else if (moveRight) {
-						for (SIinvader v : aliens) {
+					if(moveRight){
+						for(SIinvader v : aliens){
 							v.moveRight();
 						}
 					}
-					else {
-						for (SIinvader v : aliens) {
+					if(moveLeft){
+						for(SIinvader v: aliens){
 							v.moveLeft();
 						}
 					}
+//					if (moveRight && max > 499) {
+//						moveRight = false;
+//						moveLeft = true;
+//						for (SIinvader v : aliens) {
+//							v.moveDown();
+//						}
+//						SIinvader.increaseSpeed();
+//					}
+//					else if (moveLeft && min < 10) {
+//						moveLeft = false;
+//						moveRight = true;
+//						for (SIinvader v : aliens) {
+//							v.moveDown();
+//						}
+//						SIinvader.increaseSpeed();
+//					}
+//					else if (moveRight) {
+//						for (SIinvader v : aliens) {
+//							v.moveRight();
+//						}
+//					}
+//					else {
+//						for (SIinvader v : aliens) {
+//							v.moveLeft();
+//						}
+//					}
 					pulse = 0;
 				}
 
