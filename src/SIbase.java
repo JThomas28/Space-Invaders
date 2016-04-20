@@ -24,11 +24,11 @@ public class SIbase extends SIship {
 			missle.setVisible(true);
 			baseShoot().play();
 		}
-		else{ 
+		else if(missle.getVisibility()){ 
 			missle.moveUp();
-			if(!missle.getVisibility()){
-				missle = null;
-			}
+		}
+		else{
+			missle = null;
 		}
 		return missle;
 	}
