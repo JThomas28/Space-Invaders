@@ -16,7 +16,7 @@ public abstract class SIinvader extends SIship {
 
 	@Override
 	public void drawImage(Graphics g) {
-		g.drawImage(alienType, getX(), getY(), null);
+		g.drawImage(alienType, getX(), getY(), getSize().width, getSize().height, null);
 	}
 
 	@Override
