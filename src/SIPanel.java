@@ -196,7 +196,7 @@ public class SIPanel extends JPanel {
 	}
 
 	public void newBaseMissle() {
-		missle = new SImissle(base.getSize().width / 2, base.getY());
+		missle = new SImissle(base.getX() + base.getSize().width / 2, base.getY());
 		things.add(missle);
 	}
 
