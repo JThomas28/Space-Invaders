@@ -50,7 +50,7 @@ public abstract class SIinvader extends SIship {
 		return pointVal;
 	}
 	
-	private void increaseSpeed(){
+	public void increaseSpeed(){
 		speed = speed*0.8;
 	}
 	public static double getSpeed(){
