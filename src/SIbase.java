@@ -26,9 +26,9 @@ public class SIbase extends SIship {
 		}
 		else{
 			missle.moveUp();
+			fire();
 		}
 		return missle;
-		
 	}
 	
 	public Image getBaseShotImage(){
