@@ -84,15 +84,18 @@ public class SIPanel extends JPanel {
 					}
 				}
 
-				if (space && missle == null) {// !missle.getVisibility()) {
-					newBaseMissle();
-				}
-				if (missle != null) {
-					missle.moveUp();
-					
-					if (!missle.getVisibility()) {
-						missle = null;
-					}
+//				if (space && missle == null) {// !missle.getVisibility()) {
+//					newBaseMissle();
+//				}
+//				if (missle != null) {
+//					missle.moveUp();
+//					
+//					if (!missle.getVisibility()) {
+//						missle = null;
+//					}
+//				}
+				if(space){
+					base.fire();
 				}
 
 				// trying to move the invaders
