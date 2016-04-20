@@ -10,7 +10,7 @@ public class SIbase extends SIship {
 
 	//this constructor should be passed in the base's name, and it's initial position
 	public SIbase(){
-		super("SIbase.gif", 250, 350, new Dimension(40, 20));
+		super("SIbase.gif", 250, 400, new Dimension(40, 20));
 		baseImage = getImage(getImageLocation());
 		baseShotImage = getImage("SIbaseBlast.gif");
 		baseShoot();
