@@ -108,6 +108,7 @@ public class SIPanel extends JPanel {
 //						for(SIinvader i: aliens){
 //							i.moveDown();
 //						}
+						SIinvader.increaseSpeed();
 					}
 					else if(moveLeft && min < 10){
 						moveLeft = false;
