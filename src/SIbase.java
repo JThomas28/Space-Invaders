@@ -8,6 +8,7 @@ public class SIbase extends SIship {
 	private Image baseImage;
 	private Image baseShotImage;
 	private AudioClip shotOut;
+	private SImissle missle;
 
 	//this constructor should be passed in the base's name, and it's initial position
 	public SIbase(){
@@ -18,9 +19,18 @@ public class SIbase extends SIship {
 	}
 	
 	public void fire(){
-		SImissle missle = new SImissle((int) ((int)getX() + getSize().getWidth() / 2), getY(), Color.green);
-		missle.setVisible(true);
-		baseShoot().play();
+		if(missle == null){
+			missle = new SImissle((int) ((int)getX() + getSize().getWidth() / 2), getY(), Color.green);
+			missle.setVisible(true);
+			baseShoot().play();
+		}
+		else if(missle.getVisibility()){
+			missle.moveUp();
+		}
+		else{
+			missle = null;
+		}
+		
 	}
 	
 	public Image getBaseShotImage(){
