@@ -97,6 +97,7 @@ public class SIPanel extends JPanel {
 
 				// trying to move the invaders
 				if (pulse % (int) SIinvader.getSpeed() == 0){
+					
 					for (SIinvader i : aliens) {
 						max = (int) Math.max(480, i.getX() + i.getSize().getWidth());
 						if(max > 480){

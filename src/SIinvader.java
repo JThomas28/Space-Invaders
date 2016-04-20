@@ -15,6 +15,12 @@ public abstract class SIinvader extends SIship {
 		pointVal = point;
 	}
 
+	public boolean goOtherWay(){
+		if(getX() + getSize().getWidth() > SI.WIDTH || getX() <= 0){
+			return true;
+		}
+		return false;
+	}
 	@Override
 	public void drawImage(Graphics g) {
 		g.drawImage(alienType, getX(), getY(), getSize().width, getSize().height, null);
