@@ -133,8 +133,13 @@ public class SIPanel extends JPanel {
 
 				// if(ship.testShipHit(missle)){
 				// ship.setVisible(false);
+				if(pulse == 10){
+					pulse = 0;
+				}
+				else{
+					pulse++;
+				}
 				
-				pulse++;
 			}
 		});
 
