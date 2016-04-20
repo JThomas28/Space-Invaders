@@ -1,7 +1,6 @@
-import java.applet.Applet;
 import java.applet.AudioClip;
+import java.awt.Dimension;
 import java.awt.Image;
-import java.net.URL;
 
 public abstract class SIship extends SIthing {
 	private int xPos;
@@ -11,8 +10,8 @@ public abstract class SIship extends SIthing {
 	private Image destroyedBase;
 	private Image destroyedAlien;
 
-	public SIship(String string, int x, int y) {
-		super(string, x, y);
+	public SIship(String string, int x, int y, Dimension size) {
+		super(string, x, y, size);
 		destroyedBase = getImage("SIbaseBlast.gif");
 		destroyedAlien = getImage("SIinvaderBlast.gif");
 	}

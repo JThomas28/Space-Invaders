@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -6,8 +7,8 @@ public abstract class SIinvader extends SIship {
 	private Image invaderHit;
 	private Image alienType;
 
-	public SIinvader(String img, int x, int y, int point) {
-		super(img, x, y);
+	public SIinvader(String img, int x, int y, int point, Dimension size) {
+		super(img, x, y, size);
 		alienType = getImage(img);
 		invaderHit = getImage(getImageLocation());
 		pointVal = point;

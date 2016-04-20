@@ -1,4 +1,5 @@
 import java.applet.AudioClip;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -9,7 +10,7 @@ public class SIbase extends SIship {
 
 	//this constructor should be passed in the base's name, and it's initial position
 	public SIbase(){
-		super("SIbase.gif", 250, 400);
+		super("SIbase.gif", 250, 400, new Dimension(60, 30));
 		baseImage = getImage(getImageLocation());
 		baseShotImage = getImage("SIbaseBlast.gif");
 		baseShoot();
@@ -17,7 +18,7 @@ public class SIbase extends SIship {
 	
 	@Override
 	public void drawImage(Graphics g) {
-		g.drawImage(baseImage, getX(), getY(), null);
+		g.drawImage(baseImage, getX(), getY(), getSize().width, getSize().height, null);
 	}
 
 	@Override

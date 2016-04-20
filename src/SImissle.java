@@ -1,10 +1,11 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 
 public class SImissle extends SIthing {
 	
 	public SImissle(int x, int y){
-		super(null, x, y);
+		super(null, x, y, new Dimension(2, 10));
 		setVisible(false);
 	}
 	

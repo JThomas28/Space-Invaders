@@ -1,26 +1,26 @@
 import java.applet.Applet;
 import java.applet.AudioClip;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.awt.Rectangle;
 import java.net.URL;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public abstract class SIthing {
 	private String imageLocation;
 	private int x, y;
-	private Image pic;
-
+	private Dimension size;
+	private Rectangle rectangle;
 	private boolean isVisible;
 
-	public SIthing(String image, int xPos, int yPos) {
+	public SIthing(String image, int xPos, int yPos, Dimension size) {
 		this.imageLocation = image;
+		this.size = size;
 		this.x = xPos;
 		this.y = yPos;
+		rectangle = new Rectangle(xPos, yPos, size.width, size.height);
 		isVisible = true;
 	}
 
@@ -36,9 +36,16 @@ public abstract class SIthing {
 		return Applet.newAudioClip(url);
 	}
 	
-	public int getWidth(){
-		Image img = getImage(imageLocation);
-		return img.getWidth(null);
+	public Dimension getSize(){
+		return size;
+	}
+	
+	public void setSize(Dimension size){
+		this.size = size;
+	}
+	
+	public Rectangle getRectangle(){
+		return rectangle;
 	}
 	
 	public void setVisible(boolean b) {
