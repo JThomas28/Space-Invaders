@@ -23,7 +23,8 @@ public class SIPanel extends JPanel {
 	private ArrayList<SIinvader> aliens = new ArrayList<SIinvader>();
 	private boolean moveRight = true;
 	private boolean moveLeft = false;
-	private int min, max = 0;
+	private int max = 0;
+	private int min = 550;
 
 	public SIPanel() {
 		setFocusable(true);
@@ -92,65 +93,40 @@ public class SIPanel extends JPanel {
 						missle = null;
 					}
 				}
-				
-//				boolean moveRight = true;
-//				boolean moveLeft = false;
-				//trying to move the invaders
+
+				// trying to move the invaders
 				if (pulse % SIinvader.getSpeed() == 0) {
-					for(SIinvader i : aliens){
-						if(moveRight && i.getX() + i.getSize().getWidth() >= 500){
-							moveRight = false;
-							moveLeft = true;
-							for(SIinvader v : aliens){
-								v.moveDown();
-							}
-							SIinvader.increaseSpeed();
+					for (SIinvader i : aliens) {
+						Math.max(max, i.getX()); //+ i.getSize().getWidth());
+						Math.min(min, i.getX());
+					}
+
+					if (moveRight && max >= 500) {
+						moveRight = false;
+						moveLeft = true;
+						for (SIinvader v : aliens) {
+							v.moveDown();
 						}
-						else if(moveLeft && i.getX() <= 0){
-							moveLeft = false;
-							moveRight = true;
-							for(SIinvader v: aliens){
-								v.moveDown();
-							}
-							SIinvader.increaseSpeed();
+						SIinvader.increaseSpeed();
+					}
+					else if (moveLeft && min <= 0) {
+						moveLeft = false;
+						moveRight = true;
+						for (SIinvader v : aliens) {
+							v.moveDown();
 						}
-						else if(moveRight){
-							for(SIinvader v:aliens){
-								v.moveRight();
-							}
-						}
-						else{
-							for(SIinvader v : aliens){
-								v.moveLeft();
-							}
+						SIinvader.increaseSpeed();
+					}
+					else if (moveRight) {
+						for (SIinvader v : aliens) {
+							v.moveRight();
 						}
 					}
-//					if(moveRight && max >= 450){
-//						moveRight = false;
-//						moveLeft = true;
-////						for(SIinvader i: aliens){
-////							i.moveDown();
-////						}
-//						SIinvader.increaseSpeed();
-//					}
-//					else if(moveLeft && min < 10){
-//						moveLeft = false;
-//						moveRight = true;
-////						for(SIinvader i: aliens){
-////							i.moveDown();
-////						}
-//
-//					}
-//					else if(moveRight){
-//						for(SIinvader i: aliens){
-//							i.moveRight();
-//						}
-//					}
-//					else{
-//						for(SIinvader i: aliens){
-//							i.moveLeft();
-//						}
-//					}
+					else {
+						for (SIinvader v : aliens) {
+							v.moveLeft();
+						}
+					}
 				}
 
 				// if(ship.testShipHit(missle)){
@@ -160,9 +136,9 @@ public class SIPanel extends JPanel {
 			}
 		});
 
-	timer.start();
+		timer.start();
 
-	setBackground(Color.BLACK);
+		setBackground(Color.BLACK);
 		newGame();
 	}
 
