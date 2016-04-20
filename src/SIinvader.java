@@ -6,6 +6,7 @@ public abstract class SIinvader extends SIship {
 	private int pointVal;
 	private Image invaderHit;
 	private Image alienType;
+	private static double speed = 40;
 
 	public SIinvader(String img, int x, int y, int point, Dimension size) {
 		super(img, x, y, size);
@@ -34,10 +35,7 @@ public abstract class SIinvader extends SIship {
 	}
 
 	@Override
-	public void moveUp() {
-		// TODO Auto-generated method stub
-
-	}
+	public void moveUp() {}
 
 	@Override
 	public void moveDown() {
@@ -50,6 +48,13 @@ public abstract class SIinvader extends SIship {
 	}
 	public int getPointVal(){
 		return pointVal;
+	}
+	
+	private void increaseSpeed(){
+		speed = speed*0.8;
+	}
+	public static double getSpeed(){
+		return speed;
 	}
 
 }

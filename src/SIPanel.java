@@ -96,7 +96,7 @@ public class SIPanel extends JPanel {
 //				boolean moveRight = true;
 //				boolean moveLeft = false;
 				//trying to move the invaders
-				if (pulse % 2 == 0) {
+				if (pulse % SIinvader.getSpeed() == 0) {
 					for(SIinvader i: aliens){
 						min = Math.min(min, i.getX());
 						max = Math.max(max, i.getX());
@@ -155,29 +155,25 @@ public class SIPanel extends JPanel {
 
 				if (i == 0) {
 					// draw top type of alien
-					invader = new SItop(50 + 42 * j, 50 + 25 * i);
+					invader = new SItop(50 + 30 * j, 50 + 25 * i);
 					aliens.add(invader);
-					// things.add(invader);
+					things.add(invader);
 
 				}
 				if (i == 1 || i == 2) {
 					// draw middle alien
-					invader = new SImiddle(50 + 42 * j, 50 + 25 * i);
-
+					invader = new SImiddle(50 + 30 * j, 50 + 25 * i);
 					aliens.add(invader);
-					// things.add(invader);
+					things.add(invader);
 				}
 				if (i == 3 || i == 4) {
 					// draw bottom alien
-					invader = new SIbottom(50 + 42 * j, 50 + 25 * i);
+					invader = new SIbottom(50 + 30 * j, 50 + 25 * i);
 					aliens.add(invader);
-					// things.add(invader);
+					things.add(invader);
 				}
 
 			}
-		}
-		for (int i = 0; i < aliens.size(); i++) {
-			things.add(aliens.get(i));
 		}
 
 	}
