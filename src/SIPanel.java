@@ -86,13 +86,10 @@ public class SIPanel extends JPanel {
 
 				if (space && missle == null) {// !missle.getVisibility()) {
 					newBaseMissle();
-					base.baseShoot().play();
-					missle.setVisible(true);
 				}
 				if (missle != null) {
-					//if (missle.getVisibility()) {
-						missle.moveUp();
-					//}
+					missle.moveUp();
+					
 					if (!missle.getVisibility()) {
 						missle = null;
 					}
@@ -138,12 +135,7 @@ public class SIPanel extends JPanel {
 				// if(ship.testShipHit(missle)){
 				// ship.setVisible(false);
 				
-				if(pulse == 40){
-					pulse = 0;
-				}
-				else{
-					pulse++;
-				}
+				pulse++;
 				
 			}
 		});
@@ -206,6 +198,8 @@ public class SIPanel extends JPanel {
 	public void newBaseMissle() {
 		missle = new SImissle(base.getX() + base.getSize().width / 2, base.getY(), Color.green);
 		things.add(missle);
+		base.baseShoot().play();
+		missle.setVisible(true);
 	}
 
 	@Override

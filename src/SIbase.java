@@ -1,4 +1,5 @@
 import java.applet.AudioClip;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -14,6 +15,12 @@ public class SIbase extends SIship {
 		baseImage = getImage(getImageLocation());
 		baseShotImage = getImage("SIbaseBlast.gif");
 		baseShoot();
+	}
+	
+	public void fire(){
+		SImissle missle = new SImissle((int) ((int)getX() + getSize().getWidth() / 2), getY(), Color.green);
+		missle.setVisible(true);
+		baseShoot().play();
 	}
 	
 	public Image getBaseShotImage(){
