@@ -30,7 +30,6 @@ public class SImissle extends SIthing {
 		}
 		else{
 			setVisible(false);
-			
 		}
 	}
 	@Override

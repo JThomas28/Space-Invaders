@@ -67,7 +67,7 @@ public class SIPanel extends JPanel {
 			}
 		});
 
-		timer = new Timer(100, new ActionListener() {
+		timer = new Timer(50, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
@@ -86,7 +86,7 @@ public class SIPanel extends JPanel {
 					missle.setVisible(true);
 				}
 				if (missle != null) {
-					if (missle.getVisibility() && pulse % 2 == 0) {
+					if (missle.getVisibility()) {
 						missle.moveUp();
 					}
 					if (!missle.getVisibility()) {
@@ -95,13 +95,13 @@ public class SIPanel extends JPanel {
 				}
 
 				// trying to move the invaders
-				if (pulse % SIinvader.getSpeed() == 0) {
+				if (pulse % (int) SIinvader.getSpeed() == 0) {
 					for (SIinvader i : aliens) {
-						Math.max(max, i.getX() + i.getSize().getWidth());
-						Math.min(min, i.getX());
+						max = (int) Math.max(499, i.getX() + i.getSize().getWidth());
+						min = (int) Math.min(1, i.getX());
 					}
 
-					if (moveRight && max >= 500) {
+					if (moveRight && max > 499) {
 						moveRight = false;
 						moveLeft = true;
 						for (SIinvader v : aliens) {
@@ -109,7 +109,7 @@ public class SIPanel extends JPanel {
 						}
 						SIinvader.increaseSpeed();
 					}
-					else if (moveLeft && min <= 0) {
+					else if (moveLeft && min < 9) {
 						moveLeft = false;
 						moveRight = true;
 						for (SIinvader v : aliens) {
@@ -118,6 +118,7 @@ public class SIPanel extends JPanel {
 						SIinvader.increaseSpeed();
 					}
 					else if (moveRight) {
+
 						for (SIinvader v : aliens) {
 							v.moveRight();
 						}
@@ -127,11 +128,12 @@ public class SIPanel extends JPanel {
 							v.moveLeft();
 						}
 					}
+					pulse = 0;
 				}
 
 				// if(ship.testShipHit(missle)){
 				// ship.setVisible(false);
-				// }
+				
 				pulse++;
 			}
 		});
