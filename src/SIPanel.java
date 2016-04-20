@@ -84,27 +84,15 @@ public class SIPanel extends JPanel {
 					}
 				}
 
-//				if (space && missle == null) {// !missle.getVisibility()) {
-//					newBaseMissle();
-//				}
-//				if (missle != null) {
-//					missle.moveUp();
-//					
-//					if (!missle.getVisibility()) {
-//						missle = null;
-//					}
-//				}
-				if(space){
-					if(base.getImageLocation().equals("SIbase.gif")){
-						//if base is not destroyed
-						base.fire();
-					}
-					missle = base.fire();
-					if(missle.getVisibility()){
-						things.add(missle);
-					}
+				if (space && missle == null) {// !missle.getVisibility()) {
+					newBaseMissle();
+				}
+				if (missle != null) {
+					missle.moveUp();
 					
-					things.add(missle);
+					if (!missle.getVisibility()) {
+						missle = null;
+					}
 				}
 
 				// trying to move the invaders
@@ -131,7 +119,6 @@ public class SIPanel extends JPanel {
 						SIinvader.increaseSpeed();
 					}
 					else if (moveRight) {
-
 						for (SIinvader v : aliens) {
 							v.moveRight();
 						}
@@ -148,10 +135,8 @@ public class SIPanel extends JPanel {
 				// ship.setVisible(false);
 				
 				pulse++;
-				
 			}
 		});
-
 		timer.start();
 
 		setBackground(Color.BLACK);
@@ -159,22 +144,23 @@ public class SIPanel extends JPanel {
 	}
 
 	public void newGame() {
+		things.removeAll(things);
+		aliens.removeAll(aliens);
 		initializeBase();
 		initializeAliens();
 		missle = null;
 		score = 0;
+		timer.start();
 	}
 
 	private void initializeAliens() {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 10; j++) {
-
 				if (i == 0) {
 					// draw top type of alien
 					invader = new SItop(50 + 30 * j, 50 + 25 * i);
 					aliens.add(invader);
 					things.add(invader);
-
 				}
 				if (i == 1 || i == 2) {
 					// draw middle alien
@@ -188,7 +174,6 @@ public class SIPanel extends JPanel {
 					aliens.add(invader);
 					things.add(invader);
 				}
-
 			}
 		}
 
