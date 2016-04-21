@@ -201,7 +201,12 @@ public class SIPanel extends JPanel {
 		}
 		for (int i = 0; i < things.size(); i++) {
 			SIthing currThing = things.get(i);
-			currThing.drawImage(g);
+			if(!currThing.getVisibility()){
+				things.remove(currThing);
+			}
+			else{
+				currThing.drawImage(g);
+			}
 		}
 	}
 }

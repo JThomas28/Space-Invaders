@@ -25,11 +25,11 @@ public abstract class SIinvader extends SIship {
 	public void drawImage(Graphics g) {
 		if(getHit()){
 			g.drawImage(invaderHit, getX(), getY(), getSize().width, getSize().height, null);
+			setVisible(false);
 		}
 		else{
 			g.drawImage(alienType, getX(), getY(), getSize().width, getSize().height, null);
 		}
-		
 	}
 
 	@Override
