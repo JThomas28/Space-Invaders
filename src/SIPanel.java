@@ -76,7 +76,7 @@ public class SIPanel extends JPanel {
 					for (SIinvader v : aliens) {
 						if (v.testShipHit(missle)) {
 							//things.remove(v);
-							//aliens.remove(v);
+							aliens.remove(v);
 							score += v.getPointVal();
 							break;
 						}
