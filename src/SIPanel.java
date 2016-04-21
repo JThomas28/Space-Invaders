@@ -57,7 +57,7 @@ public class SIPanel extends JPanel {
 			}
 		});
 
-		timer = new Timer(50, new ActionListener() {
+		timer = new Timer(100, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				repaint();
@@ -98,7 +98,7 @@ public class SIPanel extends JPanel {
 									timer.stop();
 								}
 							}
-							speed = (int) (speed * .8);
+							speed *= .8;
 							//SIinvader.increaseSpeed();
 						}
 					}
