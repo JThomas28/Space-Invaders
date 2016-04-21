@@ -16,7 +16,7 @@ public abstract class SIinvader extends SIship {
 	}
 
 	public boolean goOtherWay(){
-		if(getX() + getSize().getWidth() > 470 || getX() < 20){
+		if(getX() + getSize().getWidth() > 470 || getX() < 30){
 			SIPanel.setDirection(!SIPanel.getDirection());
 			return true;
 		}
