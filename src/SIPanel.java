@@ -96,7 +96,6 @@ public class SIPanel extends JPanel {
 								if(v.getY() >= base.getY()-base.getSize().getHeight()){
 									base.setHit(true);
 									timer.stop();
-									gameOver();
 								}
 							}
 							speed = (int) (speed * .8);
@@ -145,9 +144,6 @@ public class SIPanel extends JPanel {
 		timer.restart();
 		speed = 40;
 		direction = true;
-	}
-	public void gameOver(){
-		
 	}
 
 	private void initializeAliens() {
