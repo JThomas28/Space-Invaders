@@ -44,10 +44,6 @@ public abstract class SIthing {
 		this.size = size;
 	}
 	
-	public Rectangle getRectangle(){
-		return rectangle;
-	}
-	
 	public void setVisible(boolean b) {
 		isVisible = b;
 	}

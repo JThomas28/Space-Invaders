@@ -6,24 +6,31 @@ public abstract class SIinvader extends SIship {
 	private int pointVal;
 	private Image invaderHit;
 	private Image alienType;
-	private static double speed = 40;
+	private static int speed = 40;
 
 	public SIinvader(String img, int x, int y, int point, Dimension size) {
 		super(img, x, y, size);
 		alienType = getImage(img);
-		invaderHit = getImage(getImageLocation());
+		invaderHit = getImage("SIinvaderBlast.gif");
 		pointVal = point;
 	}
 
 	public boolean goOtherWay(){
-		if(getX() + getSize().getWidth() > SI.WIDTH || getX() <= 0){
+		if(getX() + getSize().getWidth() > 480 || getX() < 20){
+			SIPanel.setDirection(!SIPanel.getDirection());
 			return true;
 		}
 		return false;
 	}
 	@Override
 	public void drawImage(Graphics g) {
-		g.drawImage(alienType, getX(), getY(), getSize().width, getSize().height, null);
+		if(getHit()){
+			g.drawImage(invaderHit, getX(), getY(), getSize().width, getSize().height, null);
+		}
+		else{
+			g.drawImage(alienType, getX(), getY(), getSize().width, getSize().height, null);
+		}
+		
 	}
 
 	@Override
@@ -45,7 +52,7 @@ public abstract class SIinvader extends SIship {
 
 	@Override
 	public void moveDown() {
-		setY(getY() + 10);
+		setY(getY() + 5);
 		
 	}
 	
@@ -57,7 +64,7 @@ public abstract class SIinvader extends SIship {
 	}
 	
 	public static void increaseSpeed(){
-		speed = speed*0.8;
+		speed = (int) (speed * 0.8);
 	}
 	public static double getSpeed(){
 		return speed;

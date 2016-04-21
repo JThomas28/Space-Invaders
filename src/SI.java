@@ -32,16 +32,14 @@ public class SI extends JFrame {
 		JMenuItem about = new JMenuItem("About...");
 
 		JMenuItem newGame = new JMenuItem("New Game");
-		newGame.setAccelerator(KeyStroke.getKeyStroke('N', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 
 		JMenuItem pause = new JMenuItem("Pause");
-		pause.setAccelerator(KeyStroke.getKeyStroke('P', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 
 		JMenuItem resume = new JMenuItem("Resume");
-		resume.setAccelerator(KeyStroke.getKeyStroke('R', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+		
 
 		JMenuItem quit = new JMenuItem("Quit");
-		quit.setAccelerator(KeyStroke.getKeyStroke('Q', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+		
 
 		// add all sub menus to game menu
 		game.add(newGame);
