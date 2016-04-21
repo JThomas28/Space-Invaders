@@ -99,7 +99,6 @@ public class SIPanel extends JPanel {
 								}
 							}
 							speed *= .8;
-							//SIinvader.increaseSpeed();
 						}
 					}
 
