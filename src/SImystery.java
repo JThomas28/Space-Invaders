@@ -67,8 +67,10 @@ public class SImystery extends SIinvader {
 	}
 
 	/**
+	 * Returns the movingRight boolean.
 	 * 
-	 * @return
+	 * @return movingRight - True if the ship is moving left to right, false
+	 *         otherwise
 	 */
 	public boolean getMovingRight() {
 		return movingRight;
