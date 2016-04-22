@@ -84,8 +84,8 @@ public class SIPanel extends JPanel {
 							break;
 						}
 					}
-					if(mystery != null){
-						if(mystery.testShipHit(missle)){
+					if (mystery != null) {
+						if (mystery.testShipHit(missle)) {
 							score += mystery.getPointVal();
 						}
 					}
@@ -130,19 +130,16 @@ public class SIPanel extends JPanel {
 
 				// if(pulse == 10){
 				if (mystery == null) {
-					if (pulse == 10) {
-						randInt = rand.nextInt(10);
-						if (randInt == 0 || randInt == 1 || randInt == 2) {
-							mystery = new SImystery();
-							mystery.getSound().loop();
-							things.add(mystery);
-						}
+					randInt = rand.nextInt(1000);
+					if (randInt == 0 || randInt == 1 || randInt == 2) {
+						mystery = new SImystery();
+						mystery.getSound().loop();
+						things.add(mystery);
 					}
 				}
-				
-				if(mystery != null){
+
+				if (mystery != null) {
 					mystery.moveMystery();
-					
 					if (!mystery.getVisibility()) {
 						things.remove(mystery);
 						aliens.remove(mystery);
