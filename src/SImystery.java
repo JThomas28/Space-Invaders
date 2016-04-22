@@ -35,10 +35,6 @@ public class SImystery extends SIinvader {
 		}
 		else {
 			g.drawImage(getImage("SImystery.gif"), getX(), getY(), getSize().width, getSize().height, null);
-			if(getVisibility()){
-				getSound().loop();
-			}
-			
 		}
 	}
 
