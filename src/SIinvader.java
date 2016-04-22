@@ -48,9 +48,6 @@ public abstract class SIinvader extends SIship {
 	}
 
 	@Override
-	public void moveUp() {}
-
-	@Override
 	public void moveDown() {
 		setY(getY() + 20);
 	}
@@ -61,10 +58,5 @@ public abstract class SIinvader extends SIship {
 
 	public int getPointVal() {
 		return pointVal;
-	}
-	
-	@Override
-	public static String getCorrectImage(){
-		return getCorrectImage();
 	}
 }

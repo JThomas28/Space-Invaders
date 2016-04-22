@@ -43,9 +43,9 @@ public abstract class SIship extends SIthing {
 		return destroyedAlien;
 	}
 
-	public Image getDestroyedBaseImage() {
-		return destroyedBase;
-	}
+//	public Image getDestroyedBaseImage() {
+//		return destroyedBase;
+//	}
 
 	public AudioClip shipHitSound() {
 		explosion = getSound("SIshipHit.wav");

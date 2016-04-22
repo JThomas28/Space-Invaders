@@ -145,7 +145,7 @@ public class SIPanel extends JPanel {
 						for (SIinvader v : aliens) {
 							v.moveRight();
 							v.changeImage();
-							v = new SIinvader(getCorrectImage(), v.getX(), v.getY());
+							//v = new SIinvader(getCorrectImage(), v.getX(), v.getY());
 						}
 					}
 					else if (!direction) {
