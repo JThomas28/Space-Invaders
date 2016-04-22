@@ -47,6 +47,13 @@ public class SImystery extends SIinvader {
 		}
 	}
 
+	/**
+	 * uses random number generator to choose whether the mystery ship should
+	 * move right or left
+	 * 
+	 * @return movingRight - true if random number 0 generated, false if 1
+	 *         generated. (Only possible to generate 0 or 1)
+	 */
 	private static int chooseX() {
 		int a = rand.nextInt(2);
 		if (a == 0) {
@@ -59,15 +66,27 @@ public class SImystery extends SIinvader {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean getMovingRight() {
 		return movingRight;
 	}
 
+	/**
+	 * returns the sound the mystery ship makes
+	 * 
+	 * @return mystery ship's sound
+	 */
 	public AudioClip getSound() {
 		sound = getSound("SImystery.wav");
 		return sound;
 	}
 
+	/**
+	 * Responsible for moving the ship across the screen
+	 */
 	public void moveMystery() {
 		if (!getMovingRight()) {
 			if (getX() > -5) {
