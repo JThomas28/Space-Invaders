@@ -131,7 +131,7 @@ public class SIPanel extends JPanel {
 						if (i.goOtherWay()) {
 							for (SIinvader v : aliens) {
 								v.moveDown();
-								if (v.getY() >= base.getY() - base.getSize().getHeight()) {
+								if (v.getY() >= base.getY() + base.getSize().getHeight()) {
 									base.setHit(true);
 									base.shipHitSound().play();
 									timer.stop();
