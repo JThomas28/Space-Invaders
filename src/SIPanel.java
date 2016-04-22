@@ -1,4 +1,3 @@
-import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -144,13 +143,13 @@ public class SIPanel extends JPanel {
 					if (direction) {
 						for (SIinvader v : aliens) {
 							v.moveRight();
-							// v.changeImage();
+							v.changeImage();
 						}
 					}
 					else if (!direction) {
 						for (SIinvader v : aliens) {
 							v.moveLeft();
-							// v.changeImage();
+							v.changeImage();
 						}
 					}
 
@@ -235,10 +234,17 @@ public class SIPanel extends JPanel {
 
 	public void alienShoot() {
 		SImissle m;
+		ArrayList <SIinvader> missleShooters = new ArrayList<SIinvader>();
 		int nbr = rand.nextInt(3);
+		for(SIinvader v : aliens){
+			if(v.getY() >= aliens.get(aliens.size() -1).getY()){
+				missleShooters.add(v);
+			}
+		}
 		for (int i = 0; i < nbr; i++) {
-			SIinvader v = aliens.get(rand.nextInt(aliens.size()));
-			m = new SImissle((v.getX() + v.getSize().width / 2), v.getY(), Color.WHITE);
+			//SIinvader v = aliens.get(rand.nextInt(10));//aliens.size()));
+			SIinvader v = missleShooters.get(rand.nextInt(missleShooters.size()));
+			m = new SImissle((v.getX() + v.getSize().width / 2), (int) (v.getY() + v.getSize().getHeight()), Color.WHITE);
 			missleArray.add(m);
 			things.add(m);
 			m.setVisible(true);
