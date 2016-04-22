@@ -67,7 +67,7 @@ public class SIPanel extends JPanel {
 		timer = new Timer(100, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				repaint();
+				
 
 				if (left) {
 					base.moveLeft();
@@ -174,11 +174,12 @@ public class SIPanel extends JPanel {
 				}
 
 				pulse++;
+				repaint();
 			}
 		});
 		timer.start();
 
-		setBackground(Color.BLACK);
+		//(Color.BLACK);
 		newGame();
 	}
 
@@ -242,7 +243,6 @@ public class SIPanel extends JPanel {
 
 	public void pause() {
 		timer.stop();
-		mystery.getSound().stop();
 	}
 
 	public void start() {
