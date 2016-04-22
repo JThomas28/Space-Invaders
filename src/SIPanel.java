@@ -105,7 +105,7 @@ public class SIPanel extends JPanel {
 					alienShoot();
 				}
 
-				if (space && missle == null) {// !missle.getVisibility()) {
+				if (space && missle == null) {
 					newBaseMissle();
 				}
 				if (missle != null) {
@@ -248,7 +248,9 @@ public class SIPanel extends JPanel {
 
 	public void pause() {
 		timer.stop();
+		mystery.getSound().stop();
 	}
+	
 
 	public void start() {
 		timer.start();
@@ -276,10 +278,7 @@ public class SIPanel extends JPanel {
 		}
 		for (int i = 0; i < things.size(); i++) {
 			SIthing currThing = things.get(i);
-			if (currThing.getVisibility()) {
-				currThing.drawImage(g);
-			}
-			else {
+			if (!currThing.getVisibility()) {
 				things.remove(currThing);
 				if (aliens.isEmpty()) {
 					tempScore = score;
@@ -287,6 +286,9 @@ public class SIPanel extends JPanel {
 					newGame();
 					score = tempScore;
 				}
+			}
+			else {
+				currThing.drawImage(g);
 			}
 		}
 	}

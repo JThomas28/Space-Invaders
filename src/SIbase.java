@@ -6,10 +6,7 @@ import java.awt.Image;
 public class SIbase extends SIship {
 	private Image baseImage;
 	private Image baseShotImage;
-	private AudioClip shotOut;
-	private AudioClip baseShot;
 
-	//this constructor should be passed in the base's name, and it's initial position
 	public SIbase(){
 		super("SIbase.gif", 250, 390, new Dimension(40, 20));
 		baseImage = getImage(getImageLocation());
@@ -28,7 +25,6 @@ public class SIbase extends SIship {
 		else{
 			g.drawImage(baseImage, getX(), getY(), getSize().width, getSize().height, null);
 		}
-		
 	}
 
 	@Override
@@ -46,8 +42,6 @@ public class SIbase extends SIship {
 	}
 	
 	public AudioClip baseShoot(){
-		//shotOut = getSound("SIbaseShoot.wav");
-		//return shotOut;
 		return getSound("SIbaseShoot.wav");
 	}
 	
