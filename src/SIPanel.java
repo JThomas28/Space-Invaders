@@ -76,31 +76,22 @@ public class SIPanel extends JPanel {
 					base.moveRight();
 				}
 
-//				if (missleArray == null) {
-//					alienShoot();
-//				}
-
 				if (!missleArray.isEmpty()) {
 					for (SImissle m : missleArray) {
-						if (m.getVisibility()) {
-							if (base.testShipHit(m)) {
-								base.setHit(true);
-								// base.shipHitSound().play();
-								timer.stop();
-							}
-							else {
-								m.moveDown();
-							}
+						if (base.testShipHit(m)){
+							timer.stop();
 						}
 						else {
-							removeArray.add(m);
-							// missleArray.remove(m);
+							m.moveDown();
+							if (!m.getVisibility()) {
+								removeArray.add(m);
+							}
 						}
 					}
-					if (!removeArray.isEmpty()) {
-						missleArray.removeAll(removeArray);
-					}
+					missleArray.removeAll(removeArray);
+
 				}
+				
 				if (missleArray.isEmpty()) {
 					alienShoot();
 				}
@@ -108,6 +99,7 @@ public class SIPanel extends JPanel {
 				if (space && missle == null) {
 					newBaseMissle();
 				}
+				
 				if (missle != null) {
 					for (SIinvader v : aliens) {
 						if (v.testShipHit(missle)) {
@@ -116,14 +108,16 @@ public class SIPanel extends JPanel {
 							break;
 						}
 					}
+					
 					if (mystery != null) {
 						if (mystery.testShipHit(missle)) {
 							score += mystery.getPointVal();
 						}
 					}
+					
 					missle.moveUp();
 					if (!missle.getVisibility()) {
-						things.remove(missle);
+						//things.remove(missle);
 						missle = null;
 					}
 				}
@@ -250,7 +244,6 @@ public class SIPanel extends JPanel {
 		timer.stop();
 		mystery.getSound().stop();
 	}
-	
 
 	public void start() {
 		timer.start();
