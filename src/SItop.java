@@ -6,6 +6,7 @@ public class SItop extends SIinvader {
 	public SItop(int x, int y){
 		super(getCorrectImage(), x, y, 30, new Dimension(30, 20));
 	}
+	
 	@Override
 	public void changeImage(){
 		if(x > 0){
