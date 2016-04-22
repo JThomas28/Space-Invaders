@@ -26,17 +26,6 @@ public class SImystery extends SIinvader {
 			return 300;
 		}
 	}
-	
-	@Override
-	public void drawImage(Graphics g){
-		if (getHit()) {
-			g.drawImage(getImage("SIinvaderBlast.gif"), getX(), getY(), getSize().width, getSize().height, null);
-			setVisible(false);
-		}
-		else {
-			g.drawImage(getImage("SImystery.gif"), getX(), getY(), getSize().width, getSize().height, null);
-		}
-	}
 
 	private static int chooseX() {
 		int a = rand.nextInt(2);
