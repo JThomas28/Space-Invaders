@@ -14,11 +14,12 @@ import javax.swing.KeyStroke;
 
 /**
  * Creates Space invader's window with all necessary components.
+ * 
  * @author JonathanThomas
  * @version 4/22/16
  */
 public class SI extends JFrame {
-	
+
 	private static final long serialVersionUID = 1L;
 	private SIPanel panel;
 
@@ -35,15 +36,15 @@ public class SI extends JFrame {
 		JMenu help = new JMenu("Help");
 		JMenu game = new JMenu("Game");
 		JMenuItem about = new JMenuItem("About...");
-		
+
 		JMenuItem newGame = new JMenuItem("New Game");
-		newGame.setAccelerator(KeyStroke.getKeyStroke('N', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+		newGame.setAccelerator(KeyStroke.getKeyStroke('N', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		JMenuItem pause = new JMenuItem("Pause");
-		pause.setAccelerator(KeyStroke.getKeyStroke('P', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+		pause.setAccelerator(KeyStroke.getKeyStroke('P', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		JMenuItem resume = new JMenuItem("Resume");
-		resume.setAccelerator(KeyStroke.getKeyStroke('R', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+		resume.setAccelerator(KeyStroke.getKeyStroke('R', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		JMenuItem quit = new JMenuItem("Quit");
-		quit.setAccelerator(KeyStroke.getKeyStroke('Q', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+		quit.setAccelerator(KeyStroke.getKeyStroke('Q', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 
 		// add all sub menus to game menu
 		game.add(newGame);
@@ -113,7 +114,7 @@ public class SI extends JFrame {
 			}
 		});
 
-		//make window visible
+		// make window visible
 		setResizable(false);
 		setSize(500, 450);
 		setLocationRelativeTo(null);
@@ -122,6 +123,7 @@ public class SI extends JFrame {
 
 	/**
 	 * create jframe
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
