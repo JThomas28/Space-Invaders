@@ -212,6 +212,7 @@ public class SIPanel extends JPanel {
 				if (i == 0) {
 					// draw top type of alien
 					invader = new SItop(50 + 30 * j, 50 + 25 * i);
+					invader.changeImage();
 					aliens.add(invader);
 					things.add(invader);
 				}
