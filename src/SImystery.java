@@ -49,7 +49,7 @@ public class SImystery extends SIinvader {
 	
 	public void moveMystery(){
 		if(!getMovingRight()){
-			if(getX() > 0){
+			if(getX() > -5){
 				setX(getX() - 10);
 			}
 			else{
