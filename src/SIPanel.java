@@ -77,7 +77,7 @@ public class SIPanel extends JPanel {
 				
 				if(!missleArray.isEmpty()){
 					for(SImissle m : missleArray){
-						if(base.testShipHit(m)){
+						if(base.testBaseHit(m)){
 							base.setHit(true);
 							//base.shipHitSound().play();
 							timer.stop();

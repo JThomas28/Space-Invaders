@@ -17,29 +17,37 @@ public abstract class SIship extends SIthing {
 
 	public boolean testShipHit(SImissle missle) {
 		if (this.getVisibility() && missle.getVisibility()) {
-			if (missle.getX() + 2 >= this.getX() && missle.getX() <= (this.getX() + this.getSize().getWidth())
-					&& missle.getY() - 10 >= this.getY() && missle.getY() -10 <= (this.getY() + this.getSize().getHeight())) {
+			if (missle.getX() + 2 >= this.getX() && missle.getX() + 2 <= (this.getX() + this.getSize().getWidth())
+					&& missle.getY() - 10 >= this.getY()
+					&& missle.getY() - 10 <= (this.getY() + this.getSize().getHeight())) {
 				hit = true;
 				explosion.play();
 				missle.setVisible(false);
 			}
-			else{
+			else {
 				hit = false;
 			}
 		}
 		return hit;
 	}
-	
-	public boolean testBaseHit(SImissle m){
-		if(this.getVisibility() && m.getVisibility()){
-			if(m.getX() + 2 >= this.getX())
+
+	public boolean testBaseHit(SImissle m) {
+		if (this.getVisibility() && m.getVisibility()) {
+			if (m.getX() + 2 >= this.getX() && m.getX() + 2 <= (this.getX() + this.getSize().getWidth())
+					&& m.getY() >= (this.getY() + this.getSize().getHeight())) {
+				hit = true;
+			}
+			else {
+				hit = false;
+			}
 		}
+		return hit;
 	}
-	
-	public void setHit(boolean t){
+
+	public void setHit(boolean t) {
 		hit = t;
 	}
-	
+
 	public boolean getHit() {
 		return hit;
 	}
