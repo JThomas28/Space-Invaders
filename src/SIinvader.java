@@ -52,7 +52,6 @@ public abstract class SIinvader extends SIship {
 	@Override
 	public void moveDown() {
 		setY(getY() + 10);
-		
 	}
 	
 	public Image getInvaderHit(){
