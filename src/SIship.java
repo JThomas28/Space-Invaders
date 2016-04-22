@@ -51,4 +51,8 @@ public abstract class SIship extends SIthing {
 		explosion = getSound("SIshipHit.wav");
 		return explosion;
 	}
+
+	public void changeImage() {
+		
+	}
 }

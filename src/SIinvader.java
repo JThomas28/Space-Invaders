@@ -66,4 +66,9 @@ public abstract class SIinvader extends SIship {
 	public int getPointVal() {
 		return pointVal;
 	}
+
+	public void changeImage() {
+		// TODO Auto-generated method stub
+		
+	}
 }
