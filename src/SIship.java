@@ -31,19 +31,6 @@ public abstract class SIship extends SIthing {
 		return hit;
 	}
 
-	public boolean testBaseHit(SImissle m) {
-		if (this.getVisibility() && m.getVisibility()) {
-			if (m.getX() + 2 >= this.getX() && m.getX() + 2 <= (this.getX() + this.getSize().getWidth())
-					&& m.getY() >= (this.getY() + this.getSize().getHeight())) {
-				hit = true;
-			}
-			else {
-				hit = false;
-			}
-		}
-		return hit;
-	}
-
 	public void setHit(boolean t) {
 		hit = t;
 	}
