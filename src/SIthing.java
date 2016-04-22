@@ -82,7 +82,7 @@ public abstract class SIthing {
 		return image.getImage();
 	}
 
-	public void changeImage() {
+	public static void changeImage() {
 		
 	}
 }
