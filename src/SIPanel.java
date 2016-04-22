@@ -83,10 +83,12 @@ public class SIPanel extends JPanel {
 				if (!missleArray.isEmpty()) {
 					for (SImissle m : missleArray) {
 						if (base.testShipHit(m)){
+							base.drawImage(getGraphics());
 							timer.stop();
 						}
 						else {
 							m.moveDown();
+							m.drawImage(getGraphics());
 							if (!m.getVisibility()) {
 								removeArray.add(m);
 							}
@@ -166,17 +168,14 @@ public class SIPanel extends JPanel {
 						things.add(mystery);
 					}
 				}
-
 				if (mystery != null) {
 					mystery.moveMystery();
 					if (!mystery.getVisibility()) {
 						things.remove(mystery);
 						aliens.remove(mystery);
-						//mystery.getSound().stop();
 						mystery = null;
 					}
 				}
-
 				pulse++;
 				repaint();
 			}

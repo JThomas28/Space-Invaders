@@ -29,7 +29,6 @@ public abstract class SIthing {
 	public abstract void moveRight();
 	public abstract void moveUp();
 	public abstract void moveDown();
-	public abstract void changeImage();
 
 	public AudioClip getSound(String filename){
 		URL url = getClass().getResource(filename);
