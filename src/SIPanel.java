@@ -77,7 +77,6 @@ public class SIPanel extends JPanel {
 				
 				if(!missleArray.isEmpty()){
 					for(SImissle m : missleArray){
-						m.setVisible(true);
 						if(base.testShipHit(m)){
 							base.setHit(true);
 							base.shipHitSound().play();
@@ -226,9 +225,13 @@ public class SIPanel extends JPanel {
 	}
 	
 	public void alienShoot(){
+		SImissle m;
 		for(int i = 0; i < 3; i ++){
 			SIinvader v = aliens.get(rand.nextInt(aliens.size()));
-			missleArray.add(new SImissle(v.getX(), v.getY(), Color.WHITE));
+			m = new SImissle(v.getX(), v.getY(), Color.WHITE);
+			missleArray.add(m);
+			things.add(m);
+			m.setVisible(true);
 		}
 	}
 

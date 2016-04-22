@@ -37,11 +37,13 @@ public class SImissle extends SIthing {
 	}
 	@Override
 	public void moveDown() {
-		if(getY() < 390){
-			setY(getY() + 15);
-		}
-		else{
-			setVisible(false);
+		if(getVisibility()){
+			if(getY() < 390){
+				setY(getY() + 15);
+			}
+			else{
+				setVisible(false);
+			}
 		}
 	}
 }
