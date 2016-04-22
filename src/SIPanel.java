@@ -132,7 +132,7 @@ public class SIPanel extends JPanel {
 								v.moveDown();
 								if (v.getY() >= base.getY() + base.getSize().getHeight()) {
 									base.setHit(true);
-									base.shipHitSound().play();
+									//base.shipHitSound().play();
 									timer.stop();
 								}
 							}

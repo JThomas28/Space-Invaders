@@ -21,6 +21,7 @@ public class SIbase extends SIship {
 	public void drawImage(Graphics g) {
 		if(getHit()){
 			g.drawImage(baseShotImage, getX(), getY(), getSize().width, getSize().height, null);
+			shipHitSound().play();
 		}
 		else{
 			g.drawImage(baseImage, getX(), getY(), getSize().width, getSize().height, null);

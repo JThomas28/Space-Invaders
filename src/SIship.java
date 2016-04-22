@@ -5,12 +5,12 @@ import java.awt.Image;
 public abstract class SIship extends SIthing {
 	private boolean hit = false;
 	private AudioClip explosion;
-	private Image destroyedBase;
+	//private Image destroyedBase;
 	private Image destroyedAlien;
 
 	public SIship(String string, int x, int y, Dimension size) {
 		super(string, x, y, size);
-		destroyedBase = getImage("SIbaseBlast.gif");
+		//destroyedBase = getImage("SIbaseBlast.gif");
 		destroyedAlien = getImage("SIinvaderBlast.gif");
 		shipHitSound();
 	}
@@ -39,9 +39,9 @@ public abstract class SIship extends SIthing {
 		return hit;
 	}
 
-	public Image getDestroyedAlienImage() {
-		return destroyedAlien;
-	}
+//	public Image getDestroyedAlienImage() {
+//		return destroyedAlien;
+//	}
 
 //	public Image getDestroyedBaseImage() {
 //		return destroyedBase;
