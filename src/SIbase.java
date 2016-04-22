@@ -46,8 +46,9 @@ public class SIbase extends SIship {
 	}
 	
 	public AudioClip baseShoot(){
-		shotOut = getSound("SIbaseShoot.wav");
-		return shotOut;
+		//shotOut = getSound("SIbaseShoot.wav");
+		//return shotOut;
+		return getSound("SIbaseShoot.wav");
 	}
 	
 	@Override

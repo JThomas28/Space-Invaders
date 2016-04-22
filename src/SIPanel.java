@@ -28,6 +28,7 @@ public class SIPanel extends JPanel {
 	private Random rand = new Random();
 	private SImystery mystery;
 	private ArrayList<SImissle> missleArray = new ArrayList<SImissle>();
+	private ArrayList<SImissle> removeArray = new ArrayList<SImissle>();
 
 	public SIPanel() {
 		setFocusable(true);
@@ -74,25 +75,33 @@ public class SIPanel extends JPanel {
 				if (right) {
 					base.moveRight();
 				}
-				
-				if(!missleArray.isEmpty()){
-					for(SImissle m : missleArray){
-						if(base.testShipHit(m)){
-							base.setHit(true);
-							//base.shipHitSound().play();
-							timer.stop();
+
+//				if (missleArray == null) {
+//					alienShoot();
+//				}
+
+				if (!missleArray.isEmpty()) {
+					for (SImissle m : missleArray) {
+						if (m.getVisibility()) {
+							if (base.testShipHit(m)) {
+								base.setHit(true);
+								// base.shipHitSound().play();
+								timer.stop();
+							}
+							else {
+								m.moveDown();
+							}
 						}
-						else if(m.getY() < 400){
-							m.moveDown();
-						}
-						else{
-							missleArray.remove(m);
-							things.remove(m);
+						else {
+							removeArray.add(m);
+							// missleArray.remove(m);
 						}
 					}
-					
+					if (!removeArray.isEmpty()) {
+						missleArray.removeAll(removeArray);
+					}
 				}
-				else if(missleArray.isEmpty()){
+				if (missleArray.isEmpty()) {
 					alienShoot();
 				}
 
@@ -225,12 +234,12 @@ public class SIPanel extends JPanel {
 		}
 
 	}
-	
-	public void alienShoot(){
+
+	public void alienShoot() {
 		SImissle m;
-		for(int i = 0; i < 3; i ++){
+		for (int i = 0; i < 3; i++) {
 			SIinvader v = aliens.get(rand.nextInt(aliens.size()));
-			m = new SImissle(v.getX(), v.getY(), Color.WHITE);
+			m = new SImissle((v.getX() + v.getSize().width / 2), v.getY(), Color.WHITE);
 			missleArray.add(m);
 			things.add(m);
 			m.setVisible(true);
@@ -263,7 +272,7 @@ public class SIPanel extends JPanel {
 		g.setColor(Color.GREEN);
 		g.drawString("Score:  " + score, 10, 20);
 		if (base.getHit()) {
-			g.drawString("GameOver. Your Score: "+ score, 200, 200);
+			g.drawString("Game Over. Your Score: " + score, 160, 200);
 		}
 		for (int i = 0; i < things.size(); i++) {
 			SIthing currThing = things.get(i);
