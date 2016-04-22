@@ -50,10 +50,4 @@ public class SIbase extends SIship {
 	public void moveUp() {}
 	@Override
 	public void moveDown() {}
-
-	@Override
-	public void changeImage() {
-		// TODO Auto-generated method stub
-		
-	}
 }

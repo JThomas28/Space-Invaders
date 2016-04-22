@@ -35,16 +35,12 @@ public abstract class SIinvader extends SIship {
 
 	@Override
 	public void moveLeft() {
-		//if (getX() > 21) {
-			setX(getX() - 20);
-		//}
+		setX(getX() - 20);
 	}
 
 	@Override
 	public void moveRight() {
-		//if (getX() + getSize().getWidth() < 479) {
-			setX(getX() + 20);
-		//}
+		setX(getX() + 20);
 	}
 	
 	@Override

@@ -17,6 +17,7 @@ public class SIPanel extends JPanel {
 	private static boolean direction = true;
 	
 	private ArrayList<SIthing> things = new ArrayList<SIthing>();
+	private ArrayList <SIthing> removeThings = new ArrayList<SIthing>();
 	private ArrayList<SIinvader> aliens = new ArrayList<SIinvader>();
 	private ArrayList<SImissle> missleArray = new ArrayList<SImissle>();
 	private ArrayList<SImissle> removeArray = new ArrayList<SImissle>();
@@ -88,7 +89,7 @@ public class SIPanel extends JPanel {
 						}
 						else {
 							m.moveDown();
-							m.drawImage(getGraphics());
+							//repaint();
 							if (!m.getVisibility()) {
 								removeArray.add(m);
 							}
@@ -146,14 +147,16 @@ public class SIPanel extends JPanel {
 					if (direction) {
 						for (SIinvader v : aliens) {
 							v.moveRight();
+							//repaint();
 							//v.changeImage();
 						}
 					}
 					else if (!direction) {
 						for (SIinvader v : aliens) {
 							v.moveLeft();
-							v.changeImage();
-							v = new SItop(v.getX(), v.getY());
+							//v.drawImage(getGraphics());
+							//v.changeImage();
+							//v = new SItop(v.getX(), v.getY());
 						}
 					}
 
@@ -281,8 +284,26 @@ public class SIPanel extends JPanel {
 		if (base.getHit()) {
 			g.drawString("Game Over. Your Score: " + score, 160, 200);
 		}
+//		if(aliens.isEmpty()){
+//			tempScore = score;
+//			timer.stop();
+//			newGame();
+//			score = tempScore;
+//		}
+//		
+//		else{
+//			for(SIinvader i : aliens){
+//				if(!i.getVisibility()){
+//					removeThings.add(i);
+//				}
+//				else{
+//					i.drawImage(g);
+//				}
+//			}
+//		}
 		for (int i = 0; i < things.size(); i++) {
 			SIthing currThing = things.get(i);
+			//currThing.drawImage(g);
 			if (!currThing.getVisibility()) {
 				things.remove(currThing);
 				if (aliens.isEmpty()) {

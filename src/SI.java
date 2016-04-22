@@ -30,16 +30,15 @@ public class SI extends JFrame {
 		JMenu help = new JMenu("Help");
 		JMenu game = new JMenu("Game");
 		JMenuItem about = new JMenuItem("About...");
-
+		
 		JMenuItem newGame = new JMenuItem("New Game");
-
+		newGame.setAccelerator(KeyStroke.getKeyStroke('N', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
 		JMenuItem pause = new JMenuItem("Pause");
-
+		pause.setAccelerator(KeyStroke.getKeyStroke('P', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
 		JMenuItem resume = new JMenuItem("Resume");
-		
-
+		resume.setAccelerator(KeyStroke.getKeyStroke('R', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
 		JMenuItem quit = new JMenuItem("Quit");
-		
+		quit.setAccelerator(KeyStroke.getKeyStroke('Q', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
 
 		// add all sub menus to game menu
 		game.add(newGame);
@@ -68,14 +67,9 @@ public class SI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int result = JOptionPane.showConfirmDialog(SI.this, "Start a new Game?", "Confirm",
 						JOptionPane.YES_NO_OPTION);
-				
 				if (result == JOptionPane.YES_OPTION) {
 					// start new game
 					panel.newGame();
-				}
-
-				else {
-					// continue with regular game. User chose no
 				}
 			}
 		});
@@ -102,7 +96,7 @@ public class SI extends JFrame {
 				int result = JOptionPane.showConfirmDialog(SI.this, "Dare to Quit?", "Select an Option",
 						JOptionPane.YES_NO_OPTION);
 				if (result == JOptionPane.YES_OPTION) {
-					dispose();
+					System.exit(0);
 				}
 			}
 		});
@@ -110,7 +104,7 @@ public class SI extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				dispose();
+				System.exit(0);
 			}
 		});
 
