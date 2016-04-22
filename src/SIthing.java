@@ -81,4 +81,8 @@ public abstract class SIthing {
 		ImageIcon image = new ImageIcon(url);
 		return image.getImage();
 	}
+
+	public void changeImage() {
+		
+	}
 }

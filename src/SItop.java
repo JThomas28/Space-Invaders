@@ -7,6 +7,7 @@ public class SItop extends SIinvader {
 		super(getCorrectImage(), x, y, 30, new Dimension(30, 20));
 	}
 	
+	@Override
 	public static void changeImage(){
 		if(x > 0){
 			img = "SItop0.gif";
