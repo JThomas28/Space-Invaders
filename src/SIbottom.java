@@ -2,7 +2,7 @@ import java.awt.Dimension;
 
 /**
  * SIbottom initializes bottom aliens.
- * @author Jonathan Thomas
+ * @author JonathanThomas
  * @version 4/22/16
  *
  */
