@@ -85,4 +85,9 @@ public abstract class SIthing {
 	public void changeImage() {
 		
 	}
+
+	public static String getCorrectImage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

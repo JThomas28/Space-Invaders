@@ -62,4 +62,9 @@ public abstract class SIinvader extends SIship {
 	public int getPointVal() {
 		return pointVal;
 	}
+	
+	@Override
+	public static String getCorrectImage(){
+		return getCorrectImage();
+	}
 }

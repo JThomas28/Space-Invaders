@@ -55,5 +55,9 @@ public abstract class SIship extends SIthing {
 	public void changeImage() {
 		
 	}
+	//@Override
+	public static String getCorrectImage(){
+		return null;
+	}
 	
 }
