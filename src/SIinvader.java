@@ -10,24 +10,12 @@ public abstract class SIinvader extends SIship {
 	private int pointVal;
 	private Image invaderHit;
 	private Image alienType;
-	private int speed = 4000;
 
 	public SIinvader(String img, int x, int y, int point, Dimension size) {
 		super(img, x, y, size);
 		alienType = getImage(img);
 		invaderHit = getImage("SIinvaderBlast.gif");
 		pointVal = point;
-	}
-
-	public void moveInvaders(){
-		Timer t = new Timer(speed, new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				if(getX() + getSize().getWidth() < 480){
-					moveRight();
-				}
-			}
-		});
 	}
 
 	public boolean goOtherWay() {
@@ -51,7 +39,7 @@ public abstract class SIinvader extends SIship {
 
 	@Override
 	public void moveLeft() {
-		if (getX() > 20) {
+		if (getX() > 21) {
 			setX(getX() - 20);
 		}
 	}

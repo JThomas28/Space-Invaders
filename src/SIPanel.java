@@ -1,3 +1,4 @@
+import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -125,7 +126,7 @@ public class SIPanel extends JPanel {
 				}
 
 				// move the invaders
-				if (pulse == speed) {
+				if (pulse >= speed) {
 					for (SIinvader i : aliens) {
 						if (i.goOtherWay()) {
 							for (SIinvader v : aliens) {
@@ -160,7 +161,7 @@ public class SIPanel extends JPanel {
 					randInt = rand.nextInt(1000);
 					if (randInt == 0 || randInt == 1 || randInt == 2) {
 						mystery = new SImystery();
-						mystery.getSound().loop();
+						mystery.getSound().play();
 						things.add(mystery);
 					}
 				}
@@ -170,7 +171,7 @@ public class SIPanel extends JPanel {
 					if (!mystery.getVisibility()) {
 						things.remove(mystery);
 						aliens.remove(mystery);
-						mystery.getSound().stop();
+						//mystery.getSound().stop();
 						mystery = null;
 					}
 				}
@@ -234,7 +235,8 @@ public class SIPanel extends JPanel {
 
 	public void alienShoot() {
 		SImissle m;
-		for (int i = 0; i < 3; i++) {
+		int nbr = rand.nextInt(3);
+		for (int i = 0; i < nbr; i++) {
 			SIinvader v = aliens.get(rand.nextInt(aliens.size()));
 			m = new SImissle((v.getX() + v.getSize().width / 2), v.getY(), Color.WHITE);
 			missleArray.add(m);
