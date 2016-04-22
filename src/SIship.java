@@ -52,7 +52,7 @@ public abstract class SIship extends SIthing {
 		return explosion;
 	}
 
-	public void changeImage() {
-		
-	}
+//	public void changeImage() {
+//		
+//	}
 }

@@ -52,8 +52,8 @@ public class SIbase extends SIship {
 	public void moveDown() {}
 
 	@Override
-	public String getCorrectImage() {
+	public void changeImage() {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 }
