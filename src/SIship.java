@@ -22,7 +22,7 @@ public abstract class SIship extends SIthing {
 					&& missle.getY() - 10 <= (this.getY() + this.getSize().getHeight())) {
 				hit = true;
 				explosion.play();
-				//missle.setVisible(false);
+				missle.setVisible(false);
 			}
 			else {
 				hit = false;
