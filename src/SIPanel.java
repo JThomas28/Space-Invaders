@@ -23,6 +23,7 @@ public class SIPanel extends JPanel {
 	private ArrayList<SIinvader> aliens = new ArrayList<SIinvader>();
 	private static boolean direction = true;
 	private int speed = 40;
+	private int tempScore;
 	private int randInt;
 	private Random rand = new Random();
 	private SImystery mystery;
@@ -128,7 +129,6 @@ public class SIPanel extends JPanel {
 					pulse = 0;
 				}
 
-				// if(pulse == 10){
 				if (mystery == null) {
 					randInt = rand.nextInt(1000);
 					if (randInt == 0 || randInt == 1 || randInt == 2) {
@@ -173,8 +173,7 @@ public class SIPanel extends JPanel {
 		initializeAliens();
 		missle = null;
 		score = 0;
-		timer.restart();
-		// timer.start();
+		timer.start();
 		speed = 40;
 		direction = true;
 	}
@@ -231,7 +230,7 @@ public class SIPanel extends JPanel {
 		g.setColor(Color.GREEN);
 		g.drawString("Score:  " + score, 10, 20);
 		if (base.getHit()) {
-			g.drawString("Game Over. Your Score: " + score, 200, 200);
+			g.drawString("GameOver. Your Score: "+ score, 230, 200);
 		}
 		for (int i = 0; i < things.size(); i++) {
 			SIthing currThing = things.get(i);
@@ -241,7 +240,10 @@ public class SIPanel extends JPanel {
 			else {
 				things.remove(currThing);
 				if (aliens.isEmpty()) {
+					tempScore = score;
+					timer.stop();
 					newGame();
+					score = tempScore;
 				}
 			}
 		}
