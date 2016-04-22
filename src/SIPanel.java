@@ -79,7 +79,7 @@ public class SIPanel extends JPanel {
 					for(SImissle m : missleArray){
 						if(base.testShipHit(m)){
 							base.setHit(true);
-							base.shipHitSound().play();
+							//base.shipHitSound().play();
 							timer.stop();
 						}
 						else if(m.getY() < 400){
@@ -87,8 +87,10 @@ public class SIPanel extends JPanel {
 						}
 						else{
 							missleArray.remove(m);
+							things.remove(m);
 						}
 					}
+					
 				}
 				else if(missleArray.isEmpty()){
 					alienShoot();
@@ -261,7 +263,7 @@ public class SIPanel extends JPanel {
 		g.setColor(Color.GREEN);
 		g.drawString("Score:  " + score, 10, 20);
 		if (base.getHit()) {
-			g.drawString("GameOver. Your Score: "+ score, 230, 200);
+			g.drawString("GameOver. Your Score: "+ score, 200, 200);
 		}
 		for (int i = 0; i < things.size(); i++) {
 			SIthing currThing = things.get(i);
