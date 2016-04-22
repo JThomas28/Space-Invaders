@@ -30,6 +30,12 @@ public abstract class SIship extends SIthing {
 		return hit;
 	}
 	
+//	public boolean testBaseHit(SImissle m){
+//		if(this.getVisibility() && m.getVisibility()){
+//			if(m.getX())
+//		}
+//	}
+	
 	public void setHit(boolean t){
 		hit = t;
 	}
