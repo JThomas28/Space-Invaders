@@ -1,10 +1,6 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
 
 public abstract class SIinvader extends SIship {
 	private int pointVal;
@@ -65,10 +61,5 @@ public abstract class SIinvader extends SIship {
 
 	public int getPointVal() {
 		return pointVal;
-	}
-
-	public void changeImage() {
-		// TODO Auto-generated method stub
-		
 	}
 }
