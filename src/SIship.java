@@ -33,6 +33,10 @@ public abstract class SIship extends SIthing {
 	public void setHit(boolean t){
 		hit = t;
 	}
+	
+	public boolean getHit() {
+		return hit;
+	}
 
 	public Image getDestroyedAlienImage() {
 		return destroyedAlien;
@@ -42,16 +46,8 @@ public abstract class SIship extends SIthing {
 		return destroyedBase;
 	}
 
-	public boolean getHit() {
-		return hit;
-	}
-
 	public AudioClip shipHitSound() {
 		explosion = getSound("SIshipHit.wav");
 		return explosion;
-	}
-
-	public void destroyShip() {
-		setVisible(false);
 	}
 }
