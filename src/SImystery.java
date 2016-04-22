@@ -1,6 +1,5 @@
 import java.applet.AudioClip;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.util.Random;
 
 public class SImystery extends SIinvader {

@@ -29,6 +29,8 @@ public abstract class SIthing {
 	public abstract void moveRight();
 	public abstract void moveUp();
 	public abstract void moveDown();
+	public abstract void changeImage();
+	public abstract String getCorrectImage();
 	
 
 	public AudioClip getSound(String filename){
@@ -80,14 +82,5 @@ public abstract class SIthing {
 		URL url = getClass().getResource(filename);
 		ImageIcon image = new ImageIcon(url);
 		return image.getImage();
-	}
-
-	public void changeImage() {
-		
-	}
-
-	public static String getCorrectImage() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }
