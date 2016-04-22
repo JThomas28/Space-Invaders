@@ -27,6 +27,7 @@ public class SIPanel extends JPanel {
 	private int randInt;
 	private Random rand = new Random();
 	private SImystery mystery;
+	private ArrayList<SImissle> missleArray = new ArrayList<SImissle>();
 
 	public SIPanel() {
 		setFocusable(true);
@@ -72,6 +73,26 @@ public class SIPanel extends JPanel {
 				}
 				if (right) {
 					base.moveRight();
+				}
+				
+				if(!missleArray.isEmpty()){
+					for(SImissle m : missleArray){
+						m.setVisible(true);
+						if(base.testShipHit(m)){
+							base.setHit(true);
+							base.shipHitSound().play();
+							timer.stop();
+						}
+						else if(m.getY() < 400){
+							m.moveDown();
+						}
+						else{
+							missleArray.remove(m);
+						}
+					}
+				}
+				else if(missleArray.isEmpty()){
+					alienShoot();
 				}
 
 				if (space && missle == null) {// !missle.getVisibility()) {
@@ -202,6 +223,13 @@ public class SIPanel extends JPanel {
 			}
 		}
 
+	}
+	
+	public void alienShoot(){
+		for(int i = 0; i < 3; i ++){
+			SIinvader v = aliens.get(rand.nextInt(aliens.size()));
+			missleArray.add(new SImissle(v.getX(), v.getY(), Color.WHITE));
+		}
 	}
 
 	public void pause() {

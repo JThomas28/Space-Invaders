@@ -34,12 +34,6 @@ public class SImissle extends SIthing {
 				setVisible(false);
 			}
 		}
-//		if(getY() > 0){
-//			setY(getY() - 15);
-//		}
-//		else{
-//			setVisible(false);
-//		}
 	}
 	@Override
 	public void moveDown() {
