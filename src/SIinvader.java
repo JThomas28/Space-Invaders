@@ -1,11 +1,16 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
 
 public abstract class SIinvader extends SIship {
 	private int pointVal;
 	private Image invaderHit;
 	private Image alienType;
+	private int speed = 4000;
 
 	public SIinvader(String img, int x, int y, int point, Dimension size) {
 		super(img, x, y, size);
@@ -13,55 +18,66 @@ public abstract class SIinvader extends SIship {
 		invaderHit = getImage("SIinvaderBlast.gif");
 		pointVal = point;
 	}
-	
-	public void changeImage(){
-		
+
+	public void moveInvaders(){
+		Timer t = new Timer(speed, new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				if(getX() + getSize().getWidth() < 480){
+					moveRight();
+				}
+			}
+			
+		});
 	}
 
-	public boolean goOtherWay(){
-		if(getX() + getSize().getWidth() > 470 || getX() < 30){
+	public boolean goOtherWay() {
+		if (getX() + getSize().getWidth() > 470 || getX() < 30) {
 			SIPanel.setDirection(!SIPanel.getDirection());
 			return true;
 		}
 		return false;
 	}
+
 	@Override
 	public void drawImage(Graphics g) {
-		if(getHit()){
+		if (getHit()) {
 			g.drawImage(invaderHit, getX(), getY(), getSize().width, getSize().height, null);
 			setVisible(false);
 		}
-		else{
+		else {
 			g.drawImage(alienType, getX(), getY(), getSize().width, getSize().height, null);
 		}
 	}
 
 	@Override
 	public void moveLeft() {
-		if(getX() > 20){
+		if (getX() > 20) {
 			setX(getX() - 20);
 		}
 	}
 
 	@Override
 	public void moveRight() {
-		if(getX() + getSize().getWidth() < 479){
+		if (getX() + getSize().getWidth() < 479) {
 			setX(getX() + 20);
 		}
 	}
 
 	@Override
-	public void moveUp() {}
+	public void moveUp() {
+	}
 
 	@Override
 	public void moveDown() {
 		setY(getY() + 10);
 	}
-	
-	public Image getInvaderHit(){
+
+	public Image getInvaderHit() {
 		return invaderHit;
 	}
-	public int getPointVal(){
+
+	public int getPointVal() {
 		return pointVal;
 	}
 }

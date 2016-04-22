@@ -79,10 +79,14 @@ public class SIPanel extends JPanel {
 				if (missle != null) {
 					for (SIinvader v : aliens) {
 						if (v.testShipHit(missle)) {
-							// things.remove(v);
 							aliens.remove(v);
 							score += v.getPointVal();
 							break;
+						}
+					}
+					if(mystery != null){
+						if(mystery.testShipHit(missle)){
+							score += mystery.getPointVal();
 						}
 					}
 					missle.moveUp();
@@ -111,39 +115,42 @@ public class SIPanel extends JPanel {
 					if (direction) {
 						for (SIinvader v : aliens) {
 							v.moveRight();
-							//v.changeImage();
+							// v.changeImage();
 						}
 					}
 					else if (!direction) {
 						for (SIinvader v : aliens) {
 							v.moveLeft();
-							//v.changeImage();
+							// v.changeImage();
 						}
 					}
 
-					pulse = -1;
+					pulse = 0;
 				}
-				
-				if(mystery == null){
-					randInt = rand.nextInt(30);
-					if(randInt == 0 || randInt == 1 || randInt == 2){
-						mystery = new SImystery();
-						things.add(mystery);
-						aliens.add(mystery);
-						mystery.getSound().play();
+
+				// if(pulse == 10){
+				if (mystery == null) {
+					if (pulse == 10) {
+						randInt = rand.nextInt(10);
+						if (randInt == 0 || randInt == 1 || randInt == 2) {
+							mystery = new SImystery();
+							mystery.getSound().loop();
+							things.add(mystery);
+						}
 					}
 				}
 				
 				if(mystery != null){
 					mystery.moveMystery();
 					
-					if(!mystery.getVisibility()){
+					if (!mystery.getVisibility()) {
 						things.remove(mystery);
 						aliens.remove(mystery);
+						mystery.getSound().stop();
 						mystery = null;
-						
 					}
 				}
+
 				pulse++;
 			}
 		});
@@ -170,7 +177,7 @@ public class SIPanel extends JPanel {
 		missle = null;
 		score = 0;
 		timer.restart();
-		//timer.start();
+		// timer.start();
 		speed = 40;
 		direction = true;
 	}
@@ -236,7 +243,7 @@ public class SIPanel extends JPanel {
 			}
 			else {
 				things.remove(currThing);
-				if(aliens.isEmpty()){
+				if (aliens.isEmpty()) {
 					newGame();
 				}
 			}
