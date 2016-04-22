@@ -75,7 +75,7 @@ public class SIPanel extends JPanel {
 				if (missle != null) {
 					for (SIinvader v : aliens) {
 						if (v.testShipHit(missle)) {
-							//things.remove(v);
+							// things.remove(v);
 							aliens.remove(v);
 							score += v.getPointVal();
 							break;
@@ -88,13 +88,14 @@ public class SIPanel extends JPanel {
 				}
 
 				// move the invaders
-				if (pulse == speed){
+				if (pulse == speed) {
 					for (SIinvader i : aliens) {
 						if (i.goOtherWay()) {
 							for (SIinvader v : aliens) {
 								v.moveDown();
-								if(v.getY() >= base.getY()-base.getSize().getHeight()){
+								if (v.getY() >= base.getY() - base.getSize().getHeight()) {
 									base.setHit(true);
+									base.shipHitSound().play();
 									timer.stop();
 								}
 							}
@@ -112,7 +113,7 @@ public class SIPanel extends JPanel {
 							v.moveLeft();
 						}
 					}
-					
+
 					pulse = -1;
 				}
 				pulse++;
@@ -141,6 +142,7 @@ public class SIPanel extends JPanel {
 		missle = null;
 		score = 0;
 		timer.restart();
+		//timer.start();
 		speed = 40;
 		direction = true;
 	}
@@ -196,16 +198,19 @@ public class SIPanel extends JPanel {
 		super.paintComponent(g);
 		g.setColor(Color.GREEN);
 		g.drawString("Score:  " + score, 10, 20);
-		if(base.getHit()){
+		if (base.getHit()) {
 			g.drawString("Game Over. Your Score: " + score, 200, 200);
 		}
 		for (int i = 0; i < things.size(); i++) {
 			SIthing currThing = things.get(i);
-			if(!currThing.getVisibility()){
-				things.remove(currThing);
-			}
-			else{
+			if (currThing.getVisibility()) {
 				currThing.drawImage(g);
+			}
+			else {
+				things.remove(currThing);
+				if(aliens.isEmpty()){
+					newGame();
+				}
 			}
 		}
 	}

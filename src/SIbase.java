@@ -7,6 +7,7 @@ public class SIbase extends SIship {
 	private Image baseImage;
 	private Image baseShotImage;
 	private AudioClip shotOut;
+	private AudioClip baseShot;
 
 	//this constructor should be passed in the base's name, and it's initial position
 	public SIbase(){
@@ -48,6 +49,7 @@ public class SIbase extends SIship {
 		shotOut = getSound("SIbaseShoot.wav");
 		return shotOut;
 	}
+	
 	@Override
 	public void moveUp() {}
 	@Override
