@@ -4,7 +4,7 @@ import java.awt.Dimension;
  * SItop is the class responsible for initializing top row aliens
  * 
  * @author JonathanThomas
- *
+ * @version 4/22/16
  */
 public class SItop extends SIinvader {
 	/**
