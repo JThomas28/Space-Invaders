@@ -43,7 +43,6 @@ public class SImystery extends SIinvader {
 		return movingRight;
 	}
 	
-	
 	public AudioClip getSound(){
 		sound = getSound("SImystery.wav");
 		return sound;
