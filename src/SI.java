@@ -12,14 +12,19 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+/**
+ * Creates Space invader's window with all necessary components.
+ * @author JonathanThomas
+ * @version 4/22/16
+ */
 public class SI extends JFrame {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private SIPanel panel;
 
+	/**
+	 * Jframe constructor. Creates window
+	 */
 	public SI() {
 		super("Space Invaders");
 
@@ -104,16 +109,21 @@ public class SI extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				System.exit(0);
+				dispose();
 			}
 		});
 
+		//make window visible
 		setResizable(false);
 		setSize(500, 450);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 
+	/**
+	 * create jframe
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		JFrame si = new SI();
 		si.setVisible(true);
