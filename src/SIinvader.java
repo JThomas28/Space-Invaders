@@ -10,9 +10,6 @@ public abstract class SIinvader extends SIship {
 	private int pointVal;
 	private Image invaderHit;
 	private Image alienType;
-
-	
-	public void changeImage(){}
 	
 	public SIinvader(String img, int x, int y, int point, Dimension size) {
 		super(img, x, y, size);
