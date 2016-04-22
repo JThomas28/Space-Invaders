@@ -17,7 +17,6 @@ public abstract class SIthing {
 	private String imageLocation;
 	private int x, y;
 	private Dimension size;
-	private Rectangle rectangle;
 	private boolean isVisible;
 
 	/**
@@ -37,7 +36,7 @@ public abstract class SIthing {
 		this.size = size;
 		this.x = xPos;
 		this.y = yPos;
-		rectangle = new Rectangle(xPos, yPos, size.width, size.height);
+		new Rectangle(xPos, yPos, size.width, size.height);
 		isVisible = true;
 	}
 

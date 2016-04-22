@@ -1,6 +1,5 @@
 import java.applet.AudioClip;
 import java.awt.Dimension;
-import java.awt.Image;
 
 public abstract class SIship extends SIthing {
 
@@ -11,7 +10,6 @@ public abstract class SIship extends SIthing {
 	 */
 	private boolean hit = false;
 	private AudioClip explosion;
-	private Image destroyedAlien;
 
 	/**
 	 * Ship's constructor. Creates a new ship with the specified image,
@@ -28,8 +26,6 @@ public abstract class SIship extends SIthing {
 	 */
 	public SIship(String string, int x, int y, Dimension size) {
 		super(string, x, y, size);
-		// destroyedBase = getImage("SIbaseBlast.gif");
-		destroyedAlien = getImage("SIinvaderBlast.gif");
 		shipHitSound();
 	}
 
