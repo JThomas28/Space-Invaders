@@ -8,6 +8,7 @@ import java.awt.Dimension;
  *
  */
 public class SIbottom extends SIinvader {
+
 	/**
 	 * Constructor for initializing bottom aliens at given position
 	 * 

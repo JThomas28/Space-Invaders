@@ -29,14 +29,17 @@ public class SI extends JFrame {
 	public SI() {
 		super("Space Invaders");
 
+		// create the game panel and add to frame
 		panel = new SIPanel();
 		add(panel);
 
+		// create all menus and add to frame
 		JMenuBar menus = new JMenuBar();
 		JMenu help = new JMenu("Help");
 		JMenu game = new JMenu("Game");
 		JMenuItem about = new JMenuItem("About...");
 
+		// Creating menu items and adding keyboard shortcuts
 		JMenuItem newGame = new JMenuItem("New Game");
 		newGame.setAccelerator(KeyStroke.getKeyStroke('N', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		JMenuItem pause = new JMenuItem("Pause");
@@ -59,6 +62,7 @@ public class SI extends JFrame {
 		menus.add(help);
 		setJMenuBar(menus);
 
+		// When about is pressed, displays showing name of project's author
 		about.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -67,7 +71,7 @@ public class SI extends JFrame {
 			}
 		});
 
-		// new game action listener
+		// new game action listener. creates new game if clicked
 		newGame.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -80,6 +84,7 @@ public class SI extends JFrame {
 			}
 		});
 
+		// pauses current game
 		pause.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -87,6 +92,7 @@ public class SI extends JFrame {
 			}
 		});
 
+		// resumes a paused game
 		resume.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -95,8 +101,8 @@ public class SI extends JFrame {
 			}
 		});
 
+		// displays a confirm dialog if user clicks quit
 		quit.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int result = JOptionPane.showConfirmDialog(SI.this, "Dare to Quit?", "Select an Option",
@@ -107,10 +113,11 @@ public class SI extends JFrame {
 			}
 		});
 
+		// window listener. Exits program
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				dispose();
+				System.exit(0);
 			}
 		});
 
@@ -122,7 +129,7 @@ public class SI extends JFrame {
 	}
 
 	/**
-	 * create jframe
+	 * Main method. Creates jframe and set it visible
 	 * 
 	 * @param args
 	 */
