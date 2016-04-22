@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -22,6 +23,9 @@ public class SIPanel extends JPanel {
 	private ArrayList<SIinvader> aliens = new ArrayList<SIinvader>();
 	private static boolean direction = true;
 	private int speed = 40;
+	private int randInt;
+	private Random rand = new Random();
+	private SImystery mystery;
 
 	public SIPanel() {
 		setFocusable(true);
@@ -83,6 +87,7 @@ public class SIPanel extends JPanel {
 					}
 					missle.moveUp();
 					if (!missle.getVisibility()) {
+						things.remove(missle);
 						missle = null;
 					}
 				}
@@ -117,6 +122,27 @@ public class SIPanel extends JPanel {
 					}
 
 					pulse = -1;
+				}
+				
+				if(mystery == null){
+					randInt = rand.nextInt(30);
+					if(randInt == 0 || randInt == 1 || randInt == 2){
+						mystery = new SImystery();
+						things.add(mystery);
+						aliens.add(mystery);
+						mystery.getSound().play();
+					}
+				}
+				
+				if(mystery != null){
+					mystery.moveMystery();
+					
+					if(!mystery.getVisibility()){
+						things.remove(mystery);
+						aliens.remove(mystery);
+						mystery = null;
+						
+					}
 				}
 				pulse++;
 			}

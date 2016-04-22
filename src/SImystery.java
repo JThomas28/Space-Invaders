@@ -7,7 +7,7 @@ public class SImystery extends SIinvader {
 	private static boolean movingRight;
 	private AudioClip sound;
 	public SImystery() {
-		super("SImystery.gif", chooseX(), 20, getPoints(), new Dimension(40, 30));
+		super("SImystery.gif", chooseX(), 20, getPoints(), new Dimension(30, 20));
 		sound = getSound("SImystery.wav");
 	}
 	
