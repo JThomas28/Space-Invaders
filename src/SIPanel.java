@@ -106,11 +106,13 @@ public class SIPanel extends JPanel {
 					if (direction) {
 						for (SIinvader v : aliens) {
 							v.moveRight();
+							//v.changeImage();
 						}
 					}
 					else if (!direction) {
 						for (SIinvader v : aliens) {
 							v.moveLeft();
+							//v.changeImage();
 						}
 					}
 

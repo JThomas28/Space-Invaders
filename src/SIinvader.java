@@ -13,6 +13,10 @@ public abstract class SIinvader extends SIship {
 		invaderHit = getImage("SIinvaderBlast.gif");
 		pointVal = point;
 	}
+	
+	public void changeImage(){
+		
+	}
 
 	public boolean goOtherWay(){
 		if(getX() + getSize().getWidth() > 470 || getX() < 30){
