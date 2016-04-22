@@ -1,5 +1,6 @@
 import java.applet.AudioClip;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.Random;
 
 public class SImystery extends SIinvader {
@@ -23,6 +24,18 @@ public class SImystery extends SIinvader {
 		}
 		else{
 			return 300;
+		}
+	}
+	
+	@Override
+	public void drawImage(Graphics g){
+		if (getHit()) {
+			g.drawImage(getImage("SIinvaderBlast.gif"), getX(), getY(), getSize().width, getSize().height, null);
+			setVisible(false);
+		}
+		else {
+			g.drawImage(getImage("SImystery.gif"), getX(), getY(), getSize().width, getSize().height, null);
+			getSound().loop();
 		}
 	}
 
