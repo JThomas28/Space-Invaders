@@ -11,25 +11,29 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class SIPanel extends JPanel {
-	private SIbase base;
+	
 	private static final long serialVersionUID = 1L;
 	private boolean left, right, space;
-	private ArrayList<SIthing> things = new ArrayList<SIthing>();
-	private SImissle missle;
-	private int score = 0;
-	private int pulse = 0;
-	private Timer timer;
-	private SIinvader invader;
-	private ArrayList<SIinvader> aliens = new ArrayList<SIinvader>();
 	private static boolean direction = true;
-	private int speed = 40;
-	private int tempScore;
-	private int randInt;
-	private Random rand = new Random();
-	private SImystery mystery;
+	
+	private ArrayList<SIthing> things = new ArrayList<SIthing>();
+	private ArrayList<SIinvader> aliens = new ArrayList<SIinvader>();
 	private ArrayList<SImissle> missleArray = new ArrayList<SImissle>();
 	private ArrayList<SImissle> removeArray = new ArrayList<SImissle>();
-
+	
+	private SIbase base;
+	private SImissle missle;
+	private SImystery mystery;
+	private SIinvader invader;
+	
+	private int score = 0;
+	private int pulse = 0;
+	private int speed = 40;
+	private int tempScore, randInt;
+	
+	private Timer timer;
+	private Random rand = new Random();
+	
 	public SIPanel() {
 		setFocusable(true);
 
@@ -68,10 +72,10 @@ public class SIPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-
 				if (left) {
 					base.moveLeft();
 				}
+				
 				if (right) {
 					base.moveRight();
 				}
@@ -89,7 +93,6 @@ public class SIPanel extends JPanel {
 						}
 					}
 					missleArray.removeAll(removeArray);
-
 				}
 				
 				if (missleArray.isEmpty()) {
@@ -117,7 +120,6 @@ public class SIPanel extends JPanel {
 					
 					missle.moveUp();
 					if (!missle.getVisibility()) {
-						//things.remove(missle);
 						missle = null;
 					}
 				}
@@ -179,7 +181,7 @@ public class SIPanel extends JPanel {
 		});
 		timer.start();
 
-		//(Color.BLACK);
+		setBackground(Color.BLACK);
 		newGame();
 	}
 
