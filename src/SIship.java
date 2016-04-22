@@ -55,6 +55,11 @@ public abstract class SIship extends SIthing {
 		return hit;
 	}
 
+	/**
+	 * Returns the ship hit sound
+	 * 
+	 * @return explosion - sound a ship makes when hit by missle
+	 */
 	public AudioClip shipHitSound() {
 		explosion = getSound("SIshipHit.wav");
 		return explosion;
